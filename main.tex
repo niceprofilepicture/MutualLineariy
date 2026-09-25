@@ -123,7 +123,7 @@ relations, valid arbitrarily far from equilibrium.
 Stationary probabilities and currents generally depend nonlinearly on
 transition rates. Nevertheless, varying the rates of one edge produces
 affine relations between these quantities, known as mutual
-linearity~\cite{Harunari2024,Khodabandehlou2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
+linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
 Our goal is to give a short common derivation from the classical
 finite-response identity of Markov-chain theory~\cite{Schweitzer1968,Meyer1980}.
 Written with the Drazin inverse, this identity shows that all probability
@@ -187,8 +187,8 @@ Repeating \cref{eq:edge-response} for state $m$ and eliminating $\alpha$ gives
 \end{align}
 Thus $(\pi_m',\pi_n')$ lies on one straight line for every choice of
 the new edge rates~\cite{BebonSpeck2026}.
-Choosing another starting point changes the $h_n$ but leaves their ratios,
-and hence this line, unchanged.
+The coefficients $h_n$ depend on the initial values of $W_{ij}$ and $W_{ji}$,
+but their ratios, and hence this line, do not.
 
 For state observables $O=\sum_n O_n\pi_n$ and
 $Q=\sum_n Q_n\pi_n$ with fixed weights, the same argument gives
@@ -197,8 +197,6 @@ $Q=\sum_n Q_n\pi_n$ with fixed weights, the same argument gives
     \label{eq:observables}
 \end{align}
 provided the denominator is nonzero.
-This also covers mean jump-counting rates on unchanged edges, since
-they are fixed linear combinations of the stationary probabilities.
 Taking infinitesimal changes in \cref{eq:edge-response} further yields
 \begin{align}
     \partial_{W_{ij}}\pi_n=h_n\pi_j\,,\qquad
@@ -217,7 +215,8 @@ This relation does not require mutual linearity under finite rate changes.
 
 The stationary current from $l$ to $k$ is
 $J_{kl}=W_{kl}\pi_l-W_{lk}\pi_k$.
-For an unchanged edge, \cref{eq:edge-response} gives
+For an edge whose transition rates $W_{kl}$ and $W_{lk}$ are kept fixed,
+\cref{eq:edge-response} gives
 \begin{align}
     \Delta J_{kl}=(W_{kl}h_l-W_{lk}h_k)\alpha\,.
     \label{eq:output-current}
@@ -240,7 +239,7 @@ $(k,l)$ gives
     \label{eq:currents}
 \end{align}
 which is the mutual linearity of stationary
-currents~\cite{Harunari2024,Khodabandehlou2025}.
+currents~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025}.
 Both current changes contain the same $\alpha$, so their ratio is
 independent of the new edge rates, provided the denominator is nonzero
 and the perturbed process remains irreducible.

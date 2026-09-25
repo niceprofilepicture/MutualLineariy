@@ -1,0 +1,410 @@
+\documentclass[
+  reprint,
+  superscriptaddress,
+  amsmath,
+  amssymb,
+  aps,
+  pre,
+  longbibliography
+]{revtex4-2}
+
+% Keep \bm lighter by reserving fewer bold math alphabets.
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+% Text and math fonts.
+\usepackage[utf8]{inputenc}
+\usepackage[lining,semibold]{libertine}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\usepackage[libertine,cmintegrals,bigdelims,vvarbb]{newtxmath}
+
+% Core math support.
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{needspace}
+
+% Figures and tables.
+\usepackage{graphicx}
+% REVTeX's table patches require the legacy array implementation on TeX Live 2025.
+% Load it before dcolumn, which otherwise loads the incompatible current array.
+\usepackage{array}[=2016-10-06]
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+% Links and references. Load hyperref before cleveref.
+\usepackage{xcolor}
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{RoyalBlue}{rgb}{0.0,0.14,0.4}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linktocpage=true,
+  breaklinks=true,
+  pdfstartpage=1,
+  pdfstartview=Fit,
+  pdfpagemode=UseOutlines,
+  plainpages=false,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true,
+  pdfhighlight=/O,
+  urlcolor=webbrown,
+  linkcolor=RoyalBlue,
+  filecolor=RoyalBlue,
+  citecolor=webgreen,
+  pdftitle={Mutual linearity from classical Markov response theory},
+  pdfauthor={Timur Aslyamov and Massimiliano Esposito},
+  pdfcreator={pdfLaTeX},
+  pdfproducer={LaTeX REVTeX}
+}
+
+\usepackage[capitalize]{cleveref}
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+\newcommand{\crefrangeconjunction}{--}
+
+% Prevent math macros from leaking into PDF bookmarks.
+\pdfstringdefDisableCommands{%
+  \def\theta{}%
+  \def\varphi{}%
+  \def\mathcal{}%
+  \def\mathbb{}%
+}
+
+% Normal-size equation numbers.
+\makeatletter
+\def\maketag@@@#1{\hbox{\m@th\normalfont\normalsize#1}}
+\makeatother
+
+% Small reusable macros.
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\src}{\operatorname{s}}
+\newcommand{\tgt}{\operatorname{t}}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% frontmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Mutual linearity from classical Markov response theory}
+
+\author{Timur Aslyamov}
+\email{timur.aslyamov@uni.lu}
+\affiliation{Complex Systems and Statistical Mechanics, Department of Physics and Materials Science, University of Luxembourg, 30 Avenue des Hauts-Fourneaux, L-4362 Esch-sur-Alzette, Luxembourg}
+
+\author{Massimiliano Esposito}
+\email{massimiliano.esposito@uni.lu}
+\affiliation{Complex Systems and Statistical Mechanics, Department of Physics and Materials Science, University of Luxembourg, 30 Avenue des Hauts-Fourneaux, L-4362 Esch-sur-Alzette, Luxembourg}
+
+\date{\today}
+
+
+\begin{abstract}
+The exact change of a stationary Markov distribution under a finite
+perturbation is a classical result of Markov response theory. Written with
+the Drazin inverse, it shows immediately that varying the two rates of
+one edge confines the stationary distribution to a fixed affine line.
+We use this observation to derive mutual linearity of probabilities,
+fixed linear observables, and stationary currents, and to identify their
+coefficients with integrated relaxation and first-passage times.
+More generally, a perturbation whose range lies in a fixed
+$r$-dimensional subspace confines stationary distributions to an affine
+subspace of dimension at most $r$. This provides a common algebraic
+basis for recent mutual-linearity results and makes their assumptions
+and degeneracies explicit.
+\end{abstract}
+\maketitle
+
+\textit{Exact finite response.---}The starting point is the classical
+finite-perturbation identity of Markov-chain theory
+\cite{Schweitzer1968,Meyer1975,Meyer1980}. Consider two irreducible
+continuous-time Markov jump processes on the same finite state space.
+We use column probability vectors, $\dot{\bm p}=W\bm p$, so that
+$W_{ij}$ is the rate from $j$ to $i$ for $i\ne j$ and
+$\bm 1^{\mathsf T}W=0$. Their normalized stationary distributions
+obey $W\bm\pi=0$ and $W'\bm\pi'=0$. For an arbitrary finite
+change $\Delta W=W'-W$,
+\begin{equation}
+ \boxed{\bm\pi'-\bm\pi=-W^D\Delta W\bm\pi'.}
+ \label{eq:finite}
+\end{equation}
+Here $G\equiv W^D$ is the Drazin inverse, which for an irreducible
+finite generator equals the group inverse. With
+$\Pi=\bm\pi\bm 1^{\mathsf T}$, it is characterized by
+\begin{equation}
+ WG=GW=I-\Pi,\qquad G\bm\pi=0,\qquad
+ \bm 1^{\mathsf T}G=0.
+ \label{eq:group}
+\end{equation}
+Indeed, subtracting stationarity equations gives
+$W(\bm\pi'-\bm\pi)=-\Delta W\bm\pi'$. Applying $G$ and using
+$\bm 1^{\mathsf T}(\bm\pi'-\bm\pi)=0$ proves
+\cref{eq:finite}. There is no expansion in $\Delta W$.
+
+To connect directly with the fundamental matrix, choose a rate
+$\nu$ larger than every escape rate of both processes and set
+$T=I+W/\nu$, $T'=I+W'/\nu$. Then
+\begin{equation}
+ Z=(I-T+\Pi)^{-1}=\Pi-\nu G,
+ \qquad
+ \bm\pi'-\bm\pi=Z(T'-T)\bm\pi'.
+ \label{eq:fundamental}
+\end{equation}
+This is the discrete-time identity in column convention
+\cite{Schweitzer1968,Meyer1980}; rank-one stationary updates were also
+studied explicitly by Hunter~\cite{Hunter1986}.
+An ordinary Moore--Penrose inverse $W^+$ can be used, but its solution
+must be normalized:
+$\bm\pi'-\bm\pi=-(I-\Pi)W^+\Delta W\bm\pi'$.
+In general $W^+$ and $W^D$ are different.
+
+Recent work established affine relations between stationary network
+currents~\cite{Harunari2024}, interpreted their coefficients through
+first-passage times~\cite{Khodabandehlou2025}, and extended them to
+probabilities and other observables~\cite{BebonSpeck2026} and to multiple
+controlled edges~\cite{DalCengio2025}. We show that their stationary
+linearity relations follow from \cref{eq:finite} and the range of the
+generator perturbation. The purpose is to make this classical basis
+and its consequences explicit.
+
+\textit{One edge, one response direction.---}Orient the controlled edge
+$\ell$ from state $a$ to state $b$. Write
+\begin{equation}
+ \bm d=\bm e_b-\bm e_a,\qquad
+ \bm c=k_+\bm e_a-k_-\bm e_b,
+ \qquad j_\ell=\bm c^{\mathsf T}\bm\pi,
+ \label{eq:edge}
+\end{equation}
+where $\bm e_a$ is a coordinate vector. The edge contributes
+$\bm d\bm c^{\mathsf T}$ to $W$, including its diagonal entries.
+Changing either or both rates, with all other rates fixed, gives
+\begin{equation}
+ \Delta W=\bm d\bm v^{\mathsf T},\qquad
+ \bm v=\Delta k_+\bm e_a-\Delta k_-\bm e_b.
+ \label{eq:rankone}
+\end{equation}
+Both rate changes have the same range, $\operatorname{span}\{\bm d\}$.
+Thus \cref{eq:finite} reduces to
+\begin{equation}
+ \boxed{\bm\pi'=\bm\pi+\alpha\bm h,\qquad
+ \bm h=-G\bm d,\qquad \alpha=\bm v^{\mathsf T}\bm\pi'.}
+ \label{eq:line}
+\end{equation}
+The vector $\bm h$ is fixed by any chosen reference generator;
+all dependence on the changed rates is in one scalar $\alpha$.
+In particular,
+\begin{equation}
+ \alpha=\frac{\bm v^{\mathsf T}\bm\pi}
+                  {1-\bm v^{\mathsf T}\bm h}.
+ \label{eq:amplitude}
+\end{equation}
+The denominator is nonzero whenever $W'$ remains irreducible:
+if it vanished, the nonzero zero-sum vector $\bm h$ would satisfy
+$W'\bm h=-\bm d+\bm d\bm v^{\mathsf T}\bm h=0$, contradicting
+uniqueness of the normalized stationary state.
+The nonlinear rate dependence in \cref{eq:amplitude} is fully
+compatible with the affine geometry in \cref{eq:line}.
+
+\textit{Probabilities and observables.---}For any states $m,n$,
+\begin{equation}
+ h_m(\pi_n'-\pi_n)=h_n(\pi_m'-\pi_m).
+ \label{eq:probabilities}
+\end{equation}
+When $h_m\ne0$, this gives the probability--probability slope
+$h_n/h_m$ and offset $\pi_n-(h_n/h_m)\pi_m$, independent of the
+two controlled rates. A state with $h_m=0$ is insensitive to these
+changes and cannot serve as a reference coordinate, even though
+$\pi_m>0$. More generally, for fixed coefficient vectors $\bm f$
+and $\bm g$, let $F=\bm f^{\mathsf T}\bm\pi$ and
+$H=\bm g^{\mathsf T}\bm\pi$. Then
+\begin{equation}
+ F'-F=\frac{\bm f^{\mathsf T}\bm h}
+                 {\bm g^{\mathsf T}\bm h}(H'-H),
+ \qquad \bm g^{\mathsf T}\bm h\ne0.
+ \label{eq:observables}
+\end{equation}
+This includes state averages, mean occupation-time rates, and mean
+jump-counting rates on unchanged edges: for fixed jump weights
+$q_{ij}$, $\sum_{i\ne j}q_{ij}W_{ij}\pi_j$ is a fixed linear
+functional of $\bm\pi$ if the counted rates are unchanged.
+These are the stationary observable relations of
+Ref.~\cite{BebonSpeck2026}.
+
+The ratio of the two rate responses follows just as directly.
+Taking an infinitesimal change about any member of the family gives
+\begin{equation}
+ \partial_{k_+}\pi_n=h_n\pi_a,\qquad
+ \partial_{k_-}\pi_n=-h_n\pi_b,
+ \qquad
+ -\frac{\partial_{k_+}\pi_n}{\partial_{k_-}\pi_n}
+ =\frac{\pi_a}{\pi_b},
+ \label{eq:response-ratio}
+\end{equation}
+where $G$ and $\bm h$ are evaluated at that member and the ratio
+requires $h_n\ne0$. This recovers the response-ratio identity of
+Ref.~\cite{BebonSpeck2026} without a spanning-tree calculation.
+
+\textit{Stationary currents.---}For an unchanged edge $e$, write
+$j_e=\bm c_e^{\mathsf T}\bm\pi$ with its fixed current vector
+$\bm c_e$. The controlled current has a changing coefficient vector,
+so its variation contains a direct contribution:
+\begin{align}
+ j_e'-j_e&=\alpha\bm c_e^{\mathsf T}\bm h,
+ \label{eq:output-current}\\
+ j_\ell'-j_\ell
+ &=\bm c^{\mathsf T}(\bm\pi'-\bm\pi)
+   +\bm v^{\mathsf T}\bm\pi'
+ =\alpha\kappa,
+ \qquad \kappa=1+\bm c^{\mathsf T}\bm h.
+ \label{eq:input-current}
+\end{align}
+Eliminating $\alpha$, for $\kappa\ne0$,
+\begin{equation}
+ \boxed{j_e'-j_e=\chi_{e\ell}(j_\ell'-j_\ell),\qquad
+ \chi_{e\ell}=
+ -\frac{\bm c_e^{\mathsf T}G\bm d}
+        {1-\bm c^{\mathsf T}G\bm d}.}
+ \label{eq:currents}
+\end{equation}
+This is the mutual affine linearity of stationary currents
+\cite{Harunari2024}. It holds for arbitrary simultaneous changes of
+$k_+$ and $k_-$ that preserve irreducibility. The same slope and
+offset $j_e-\chi_{e\ell}j_\ell$ apply throughout the family.
+
+Their independence of the input rates is especially transparent when
+the generator with edge $\ell$ deleted,
+$W_0=W-\bm d\bm c^{\mathsf T}$, is irreducible. Denote its
+stationary distribution and group inverse by $\bm\pi_0$ and $G_0$.
+Applying \cref{eq:finite} with $W_0$ as reference gives directly
+\begin{equation}
+ \bm\pi'=\bm\pi_0-G_0\bm d\,j_\ell',\qquad
+ j_e'=\bm c_e^{\mathsf T}\bm\pi_0
+       -\bm c_e^{\mathsf T}G_0\bm d\,j_\ell'.
+ \label{eq:deleted}
+\end{equation}
+Since $W_0\bm h=-\kappa\bm d$ and $\bm h$ is nonzero and zero-sum,
+irreducibility of $W_0$ ensures $\kappa\ne0$. Thus
+$\bm h/\kappa=-G_0\bm d$ and
+$\chi_{e\ell}=-\bm c_e^{\mathsf T}G_0\bm d$.
+For a network with positive rates in both directions on every edge,
+this deletion condition is exactly that the input edge is not a bridge.
+For general directed networks the remaining directed connectivity must
+be checked. If $\kappa=0$, the input current does not change and
+cannot parametrize the response. A bridge is the simplest example:
+its stationary current is identically zero, although changing its rates
+can redistribute probability. Equation~\eqref{eq:line} still holds.
+
+Counting on the controlled edge requires the same care as
+\cref{eq:input-current}. In particular, its traffic
+$k_+\pi_a+k_-\pi_b$ is not generally affine in the probabilities
+or in $j_\ell$ when both rates are freely varied. Already for two states,
+$\bm\pi=(k_-,k_+)^{\mathsf T}/(k_++k_-)$ is unchanged by a
+common rescaling of the rates, whereas the traffic
+$2k_+k_-/(k_++k_-)$ changes. The fixed-coefficient condition in
+\cref{eq:observables} is therefore essential.
+
+\Needspace{9\baselineskip}
+\textit{Relaxation and first-passage times.---}The response direction
+has a direct dynamical meaning. For a finite irreducible generator,
+\begin{equation}
+ \begin{split}
+ -G&=\int_0^\infty\!\bigl(\me^{Wt}-\Pi\bigr)\,\dd t,\\
+ h_n&=\int_0^\infty\!\left[
+ (\me^{Wt})_{nb}-(\me^{Wt})_{na}\right]\,\dd t.
+ \end{split}
+ \label{eq:relaxation}
+\end{equation}
+Changing one edge injects probability at one endpoint and removes it
+at the other. The fixed unperturbed relaxation maps that source into
+$\bm h$; its strength is $\alpha$.
+Let $\tau_{x\to n}$ be the mean first-passage time to $n$ from $x$,
+with $\tau_{n\to n}=0$. The group-inverse representation
+\cite{Meyer1975} gives
+\begin{equation}
+ \tau_{x\to n}=\frac{G_{nx}-G_{nn}}{\pi_n},\qquad
+ h_n=\pi_n(\tau_{a\to n}-\tau_{b\to n}).
+ \label{eq:mfpt}
+\end{equation}
+For completeness, the first identity follows because the vector on its
+right has value zero at $x=n$ and satisfies
+$(W^{\mathsf T}\bm\tau)_x=-1$ for $x\ne n$, by \cref{eq:group}.
+Substituting \cref{eq:mfpt} into \cref{eq:line} yields
+\begin{equation}
+ \pi_n'-\pi_n
+ =\pi_n(\tau_{a\to n}-\tau_{b\to n})
+       (\Delta k_+\pi_a'-\Delta k_-\pi_b').
+ \label{eq:mfpt-response}
+\end{equation}
+This is the single-edge form of the finite-change relation used in
+Ref.~\cite{Khodabandehlou2025}. That work already identifies its
+connection to Eq.~(44) of Ref.~\cite{Harvey2023}. The fundamental
+matrix, Drazin inverse, and first-passage descriptions express the same
+stationary response. Using $G_0$ in \cref{eq:mfpt} likewise recovers
+the current susceptibility in terms of first-passage times of the
+network with the input edge deleted.
+
+\textit{A fixed perturbation range.---}The argument is not specific to
+an edge. Fix an irreducible reference $W$ and suppose a family of
+irreducible generators has
+\begin{equation}
+ W(\bm\theta)-W=B V(\bm\theta)^{\mathsf T},\qquad
+ \bm 1^{\mathsf T}B=0,\qquad \operatorname{rank}B=r,
+ \label{eq:rankr}
+\end{equation}
+with $B$ independent of the controls. Equation~\eqref{eq:finite} implies
+\begin{equation}
+ \bm\pi(\bm\theta)-\bm\pi
+ =-G B V(\bm\theta)^{\mathsf T}\bm\pi(\bm\theta)
+ \in\operatorname{im}(GB).
+ \label{eq:subspace}
+\end{equation}
+All stationary distributions, and hence any collection of fixed linear
+observables, lie in an affine subspace of dimension at most $r$.
+The range must be fixed throughout the family; a rank bound on each
+individual perturbation alone does not imply this conclusion.
+For one edge $r=1$, even though two rates can be controlled
+independently. For several edges, $B$ can be their incidence matrix,
+whose rank can be smaller than the number of controlled edges.
+
+If deleting a set $\mathcal I$ of input edges leaves an irreducible
+generator $W_0$, let $B$ collect their oriented incidence vectors and
+$\bm j_{\mathcal I}$ their stationary currents. Since
+$W\bm\pi=W_0\bm\pi+B\bm j_{\mathcal I}=0$,
+\begin{equation}
+ \boxed{\bm\pi=\bm\pi_0-G_0B\bm j_{\mathcal I},\qquad
+ j_e=j_e^0-\bm c_e^{\mathsf T}G_0B\bm j_{\mathcal I},
+ \quad e\notin\mathcal I,}
+ \label{eq:multiple}
+\end{equation}
+where $j_e^0=\bm c_e^{\mathsf T}\bm\pi_0$.
+This recovers the stationary mutual-multilinearity relation
+\cite{DalCengio2025} with coefficients determined entirely by the
+remaining network. These coefficients depend on the full deleted set;
+in general they are not the coefficients obtained by perturbing each
+input separately~\cite{Khodabandehlou2025}.
+
+\Needspace{10\baselineskip}
+\textit{Discussion.---}The essence of mutual linearity is the
+combination of a fixed linear stationarity equation and a perturbation
+with one fixed source direction. Its amplitude can depend nonlinearly
+on the controlled rates, but eliminating that single amplitude leaves
+affine relations between stationary outputs. Detailed balance is
+unnecessary, and no small-perturbation assumption enters the argument.
+The classical finite-response identity therefore supplies a common,
+short derivation of the recent stationary linearity relations. Graphical formulas
+and first-passage representations give complementary ways to evaluate
+and interpret the coefficients. More generally, the dimension of the
+fixed perturbation range bounds the dimension of stationary response,
+independently of how many parameters generate that perturbation.
+
+\bibliography{references}
+\end{document}

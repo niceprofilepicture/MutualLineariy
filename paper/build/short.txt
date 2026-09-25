@@ -1,0 +1,87 @@
+                                Mutual linearity from classical Markov response theory
+
+                                          Timur Aslyamov1, ∗ and Massimiliano Esposito1, †
+                       1 Complex Systems and Statistical Mechanics, Department of Physics and Materials Science,
+                     University of Luxembourg, 30 Avenue des Hauts-Fourneaux, L-4362 Esch-sur-Alzette, Luxembourg
+                                                      (Dated: September 25, 2026)
+                 Mutual linearity of stationary probabilities and currents in Markov jump processes follows directly from
+              classical Markov response theory. Using the exact finite-response identity expressed through the Drazin in-
+              verse, we show that changing the rates of one edge changes all stationary probabilities by the same scalar
+              factor multiplied by fixed coefficients. Eliminating this factor gives the known mutual-linearity relations,
+              valid arbitrarily far from equilibrium.
+
+
+   Stationary response—Classical Markov response theory ex-           fixed weights, the same argument gives
+presses the difference between two stationary distributions                                      Í
+                                                                                                    𝑂 𝑛 ℎ𝑛
+through the fundamental matrix [1, 2]. We consider a finite                                Δ𝑂 = Í𝑛         Δ𝑄,                         (4)
+irreducible Markov jump process, 𝜕𝑡 𝒑 = 𝑊 𝒑,Íwhere 𝑊𝑖 𝑗 is                                        𝑛 𝑄 𝑛 ℎ𝑛
+the transition rate from 𝑗 to 𝑖, and 𝑊 𝑗 𝑗 = − 𝑖≠𝑗 𝑊𝑖 𝑗 . The
+stationary distribution satisfies 𝑊 𝝅 = 0 and 1⊺ 𝝅 = 1. For
+a second irreducible generator 𝑊 ′ = 𝑊 + Δ𝑊 , the exact re-
+sponse is                                                             provided the denominator is nonzero. This also covers mean
+                                                                      jump-counting rates on unchanged edges, since they are
+                                                                      fixed linear combinations of the stationary probabilities. Tak-
+                  Δ𝝅 ≡ 𝝅 ′ − 𝝅 = −𝐺Δ𝑊 𝝅 ′,                      (1)   ing infinitesimal changes in Eq. (2) further yields
+                                                                                    𝜕𝑊𝑖 𝑗 𝜋𝑛 = ℎ𝑛 𝜋 𝑗 ,      𝜕𝑊 𝑗𝑖 𝜋𝑛 = −ℎ𝑛 𝜋𝑖 ,       (5)
+where 𝐺 = 𝑊 𝐷 is the Drazin inverse [3]. It satisfies 𝐺𝑊   =          so that −𝜕𝑊𝑖 𝑗 𝜋𝑛 /𝜕𝑊 𝑗𝑖 𝜋𝑛 = 𝜋 𝑗 /𝜋𝑖 whenever ℎ𝑛 ≠ 0, recovering
+𝑊 𝐺 = 𝐼 − 𝝅1⊺ , 𝐺𝝅 = 0, and 1⊺𝐺 = 0. Indeed, subtracting the          the response ratio of Ref. [6].
+two stationary equations gives 𝑊 Δ𝝅 = −Δ𝑊 𝝅 ′ . Multiplica-              Currents—The stationary current from 𝑙 to 𝑘 is 𝐽𝑘𝑙 =
+tion by 𝐺 and normalization yield Eq. (1), without assuming           𝑊𝑘𝑙 𝜋𝑙 − 𝑊𝑙𝑘 𝜋𝑘 . For an unchanged edge, Eq. (2) gives
+that Δ𝑊 is small. We use this identity to derive the mutual
+linearity of stationary probabilities and currents [4–6].                                 Δ𝐽𝑘𝑙 = (𝑊𝑘𝑙 ℎ𝑙 − 𝑊𝑙𝑘 ℎ𝑘 )𝛼 .                 (6)
+   Mutual linearity—We change𝑊𝑖 𝑗 and𝑊 𝑗𝑖 , keeping all other         On the perturbed edge, the rates themselves also change:
+off-diagonal rates fixed and adjusting the diagonal entries to
+preserve probability conservation. Only components 𝑖 and 𝑗                     Δ𝐽𝑖 𝑗 = 𝑊𝑖 𝑗 Δ𝜋 𝑗 − 𝑊 𝑗𝑖 Δ𝜋𝑖 + Δ𝑊𝑖 𝑗 𝜋 𝑗′ − Δ𝑊 𝑗𝑖 𝜋𝑖′
+of Δ𝑊 𝝅 ′ are nonzero, and they have opposite signs. Equa-                          = (1 + 𝑊𝑖 𝑗 ℎ 𝑗 − 𝑊 𝑗𝑖 ℎ𝑖 )𝛼 .                     (7)
+tion (1) therefore gives
+                                                                      Eliminating 𝛼 gives
+
+            Δ𝜋𝑛 = (𝐺𝑛 𝑗 − 𝐺𝑛𝑖 ) (Δ𝑊𝑖 𝑗 𝜋 𝑗′ − Δ𝑊 𝑗𝑖 𝜋𝑖′ )                                         𝑊𝑘𝑙 ℎ𝑙 − 𝑊𝑙𝑘 ℎ𝑘
+                                                                                        Δ𝐽𝑘𝑙 =                          Δ𝐽𝑖 𝑗 ,        (8)
+                                                                                                 1 + 𝑊𝑖 𝑗 ℎ 𝑗 − 𝑊 𝑗𝑖 ℎ𝑖
+                 ≡ ℎ𝑛 𝛼 .                                       (2)
+                                                                      which is the mutual linearity of stationary currents [4, 5].
+                                                                      All quantities in the coefficient are evaluated at the fixed ref-
+Here ℎ𝑛 = 𝐺𝑛 𝑗 −𝐺𝑛𝑖 is evaluated at one fixed reference 𝑊 ; all       erence 𝑊 , so the same coefficient applies to arbitrary finite
+dependence on the changed rates is contained in the common            changes of 𝑊𝑖 𝑗 and 𝑊 𝑗𝑖 that preserve irreducibility. The de-
+factor 𝛼 = Δ𝑊𝑖 𝑗 𝜋 𝑗′ − Δ𝑊 𝑗𝑖 𝜋𝑖′ . Eliminating this factor between   nominator must be nonzero. For a bridge, 𝐽𝑖 𝑗 = 0 for all rates,
+two states gives                                                      and the input current cannot parametrize the response.
+                                                                         The connection with the first-passage formulation of
+                                                                      Ref. [5] follows from ℎ𝑛 = 𝜋𝑛 (𝜏 𝑗→𝑛 − 𝜏𝑖→𝑛 ), where 𝜏 𝑗→𝑛 is
+                            ℎ𝑛
+                 Δ𝜋𝑛 =         Δ𝜋𝑚 ,      ℎ𝑚 ≠ 0.               (3)   the mean first-passage time from 𝑗 to 𝑛 and 𝜏𝑛→𝑛 = 0 [3].
+                            ℎ𝑚                                        Both formulations express the same finite response.
+                                                                         Mutual linearity thus follows from the common factor in
+                                                                      Eq. (2). Changing one edge redistributes probability between
+Thus 𝜋𝑛′ is an affine function of 𝜋𝑚
+                                   ′ , with slope and offset in-
+                                                                      its two endpoints; the unperturbed generator fixes the rela-
+dependent of the varied rates. This is the mutual linearity of
+                                                                      tive changes of all stationary probabilities. Their dependence
+stationary probabilities [6]. If ℎ𝑚 = 0, that probability does
+                                                                      on the perturbed rates can be nonlinear, but eliminating the
+not change and cannot serve as a reference.
+                              Í                  Í                    common factor gives affine relations between observables.
+   For state observables 𝑂 = 𝑛 𝑂𝑛 𝜋𝑛 and 𝑄 = 𝑛 𝑄𝑛 𝜋𝑛 with             No assumption of detailed balance is needed.
+                                                                                                                                         2
+
+
+
+
+[1] P. J. Schweitzer, Perturbation theory and finite Markov chains,          Lett. 133, 047401 (2024).
+    J. Appl. Probab. 5, 401 (1968).                                      [5] F. Khodabandehlou, C. Maes, and K. Netočný, Affine relation-
+[2] C. D. Meyer, Jr., The condition of a finite Markov chain and per-        ships between steady currents, J. Phys. A: Math. Theor. 58,
+    turbation bounds for the limiting probabilities, SIAM J. Alge-           155002 (2025).
+    braic Discrete Methods 1, 273 (1980).                                [6] R. Bebon and T. Speck, Mutual linearity is a generic property
+[3] C. D. Meyer, Jr., The role of the group generalized inverse in the       of steady-state Markov networks, Phys. Rev. Lett. 136, 137401
+    theory of finite Markov chains, SIAM Rev. 17, 443 (1975).                (2026).
+[4] P. E. Harunari, S. Dal Cengio, V. Lecomte, and M. Polettini, Mu-
+    tual linearity of nonequilibrium network currents, Phys. Rev.
+
+
+
+
+∗ timur.aslyamov@uni.lu
+                                                                         † massimiliano.esposito@uni.lu
+

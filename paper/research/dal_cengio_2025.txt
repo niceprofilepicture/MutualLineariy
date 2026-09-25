@@ -1,0 +1,1671 @@
+                                                       SciPost Physics                                                                Submission
+
+
+
+                                                           Mutual Multilinearity of Nonequilibrium Network Currents
+                                                         Sara Dal Cengio1,2⋆ , Pedro E. Harunari3,4† , Vivien Lecomte2 , and Matteo Polettini5
+
+                                                       1 Department of Physics, Massachusetts Institute of Technology, Cambridge, Massachusetts
+                                                                                              02139, USA
+                                                                 2 Université Grenoble Alpes, CNRS, LIPhy, FR-38000 Grenoble, France
+                                                      3 Complex Systems and Statistical Mechanics, Department of Physics and Materials Science,
+arXiv:2502.04298v2 [cond-mat.stat-mech] 13 Jan 2026
+
+
+
+
+                                                          University of Luxembourg, 30 Avenue des Hauts-Fourneaux, L-4362 Esch-sur-Alzette,
+                                                                                              Luxembourg
+                                                      4 Aix Marseille Université, CNRS, CINAM, Turing Center for Living Systems, 13288 Marseille,
+                                                                                                 France
+                                                                               5 Via Gaspare Nadi 4, 40139 Bologna (Italy)
+
+                                                                               ⋆ saradc@mit.edu ,   † pedro.harunari@uni.lu
+
+
+
+                                                      Abstract
+                                                      Continuous-time Markov chains have been successful in modelling systems across nu-
+                                                      merous fields, with currents being fundamental entities that describe the flows of energy,
+                                                      particles, individuals, chemical species, information, or other quantities. They apply to
+                                                      systems described by agents transitioning between vertices along the edges of a net-
+                                                      work (at some rate in each direction). It has recently been shown by the authors that, at
+                                                      stationarity, a hidden linearity exists between currents that flow along edges: if one con-
+                                                      trols the current of a specific ‘input’ edge (by tuning transition rates along it), any other
+                                                      current is a linear-affine function of the input current [PRL 133, 047401 (2024)]. In this
+                                                      paper, we extend this result to the situation where one controls the currents of several
+                                                      edges, and prove that other currents are in linear-affine relation with the input ones.
+                                                      Two proofs with distinct insights are provided: the first relies on Kirchhoff’s current law
+                                                      and reduces the input set inductively through graph analysis, while the second utilizes
+                                                      the resolvent approach via a Laplace transform in time. We obtain explicit expressions
+                                                      for the current-to-current susceptibilities, which allow one to map current dependencies
+                                                      through the network. We also verify from our expression that Kirchhoff’s current law
+                                                      is recovered as a limiting case of our mutual linearity. Last, we uncover that suscep-
+                                                      tibilities can be obtained from fluctuations when the reference system is originally at
+                                                      equilibrium.
+
+
+
+
+                                                      Contents
+                                                      1 Introduction                                                                             3
+
+                                                      2 Setup and statement of the main result                                                   5
+                                                        2.1 Illustration                                                                         7
+
+                                                      3 Graph-theoretic steady-state proof                                                        8
+                                                        3.1 Proof of inductive seed                                                               8
+                                                        3.2 Proof of inductive step                                                              11
+
+
+                                                                                                    1
+ SciPost Physics                                                         Submission
+
+
+
+4 Laplace-space finite-time proof                                                12
+  4.1 Settings                                                                   12
+  4.2 Proof of mutual multilinearity                                             12
+  4.3 Taking the limit ς → 0 and mapping to the one-input-current case           14
+
+5 Further developments                                                           15
+  5.1 Recovering Kirchhoff’s Current Law                                         15
+  5.2 Connection to equilibrium fluctuations                                     17
+
+6 Conclusion and Perspectives                                                    18
+
+A Construction of potentials and affinities from transition rates                20
+
+B Linear independence of admissible currents                                     20
+                     I             I
+C Proof that 1 − λe21←e1(rE ∖I1 ) λe12←e2(rE ∖I2 ) cannot cancel                 20
+
+D A fluctuation-dissipation relation                                             21
+
+References                                                                       22
+
+
+
+
+                                               2
+ SciPost Physics                                                                     Submission
+
+
+
+1    Introduction
+In nonequilibrium Markov chains, the net number of times an edge is traversed is called a
+current, constituting a key observable. Close to equilibrium, currents (of any kind) flow pro-
+portionally to conjugated forces and therefore respond linearly to one another. This is the
+tenet of linear thermodynamics, which grounds on the notion of conjugated observables [1]
+and the varied fluctuation-dissipation relations that come with it [2–4]. Far from equilibrium,
+currents are generally nonlinear functions of the conjugated forces and therefore nonlinear
+functions of one another, and fluctuation-dissipation relations break down.
+     Historically, only a few relations are known to hold arbitrarily far from equilibrium, such as
+the fluctuation theorems [5–9], the thermodynamic uncertainty relation [10, 11], and exten-
+sions of the fluctuation-dissipation relation [12–16]. Recently, new results on the response of
+observables have started to surface [17–29], which include fluctuation-response relations [30,
+31], the connection between responses and correlations of dynamical events [32], and the
+mutual linearity of currents [33]. In this latter study [33], we have shown that any two sta-
+tionary currents always satisfy a linear-affine relation between each other, even arbitrarily far
+from equilibrium, when the transition rates of a single edge are controlled. It has been conjec-
+tured that a similar property might hold when more edges are controlled [34]. In the present
+work, we prove that a linear-affine relation among stationary currents can indeed be estab-
+lished even when the transition rates along multiple edges are simultaneously controlled. We
+explore the details and conditions for its validity, as well as the recovery of Kirchhoff’s current
+law and connections to linear response theory.
+     A special case of linear relation among stationary currents holds in the form of the Kirchhoff
+current law (KCL), which is central in Schnakenberg’s geometrical theory of Markov chains
+[35–37]. Therein, a continuous-time Markov chain is represented as a network (see Fig. 1),
+where each vertex corresponds to a state of the chain and an edge is drawn between two
+vertices whenever a transition between the corresponding states is possible. Using geometrical
+[36] or algebraic tools [38], it is possible to identify a subset of edges whose removal from
+the network results in a spanning tree, i.e. a tree that connects all vertices (see Fig. 1). The
+subset of edges that defines a spanning tree is not unique; it is referred to as a fundamental
+set, and once it is fixed, each element of this set is called a chord. The number of chords in
+a fundamental set is fixed by the network’s topology and is known as the cyclomatic number
+nc . Notably, for a given fundamental set, each chord can be uniquely associated with a specific
+cycle in the network.
+     As a direct consequence of Kirchhoff current law, any stationary edge current ȷe can be
+expressed as a superposition of the stationary currents ȷi flowing along the chords of a funda-
+mental set, as:
+                                                 nc
+                                                 X
+                                          ȷe =         γe,i ȷi                                 (1)
+                                                 i=1
+
+where γe,i = ±1, 0 are algebraic coefficients specifying whether edge e belongs to cycle i and
+the relative orientation within it. Eq. (1) is the result of the conservation of probability, which
+imposes constraints on the value that currents can take at steady-state. It tells that if an ob-
+server were to control or fix the value of all nc chord currents, all other currents would be
+determined by these values through the linear topological constraints of Eq. (1). From a ther-
+modynamic viewpoint, the chord currents ȷi ’s can be viewed as the independent degrees of
+freedom at steady state associated with thermodynamic forces (or affinities) ai which con-
+tribute independently to the stationary entropy production. As such, Eq. (1) underpins a com-
+plete thermodynamic description of stationary currents, which have proved valuable both from
+a practical and a conceptual viewpoint [38–44].
+
+                                                  3
+ SciPost Physics                                                                       Submission
+
+
+
+
+        graph                       fundamental set                     spanning tree
+
+     Figure 1: Illustration of central graph-theoretical notions. Starting from a connected
+     graph (left panel), a set of edges is identified in red (middle panel) whose removal
+     results in a spanning tree (right panel), a connected graph without cycles that con-
+     tains all vertices. Adding back one chord to the spanning tree creates exactly one
+     cycle.
+
+
+    Recently, a different form of linearity among stationary currents has been established by us
+in Ref. [33]. Therein, we ask the question of how stationary currents respond to manipulations
+of the transition rates of a single edge current, which we term input current. We proved that
+any current of the Markov process ȷe can be expressed as a linear-affine function of a single
+input current ȷi , as:
+                                         ȷe = ȷe∖i + λie←i ȷi .                              (2)
+In contrast to KCL, here the scalar coefficients ȷe∖i and λie←i are functions on the transition rates
+of the continuous-time Markov chains, excluding the transition rates of the input current itself.
+As such, they depend both on topological and dynamical properties of the Markov process. In
+particular, ȷe∖i is the value of the current ȷe in the process where the input edge is removed.
+Interestingly, the dependencies of ȷe∖i and λie←i on the transition rates can be made explicit
+using the technique of spanning tree polynomials [33, 45]. For simplicity, here and in the
+rest of the paper, we use the term linearity for linear-affine relations like Eq. (2). The affine
+coefficient is assumed to be present unless otherwise stated.
+     These two forms of mutual linearity among currents, both valid far from equilibrium,
+are utterly different in nature. On one hand, KCL states that any stationary current can be
+expressed as a linear combination of a full set of chord currents, with simple coefficients
+∈ {−1, 0, +1}, and is the consequence of probability conservation. On the other hand, Eq. (2)
+reveals a linear-affine relation between any stationary current and one input current, when
+only the rates of the latter are controlled.
+     In the present paper, we address the question of what is the fate of the linearity in Eq. (2)
+when several transitions rates, belonging to different edges, are simultaneously controlled. We
+demonstrate that linearity persists even when multiple n ≤ nc chord currents are controlled,
+and obtain explicit expressions for the current-current susceptibilities. We check that, as ex-
+pected, such expressions yield back KCL, Eq. (1), in the case n = nc . In this regard, Eqs. (1)-(2)
+can be seen as two limiting cases of a more general form of mutual multilinearity (MML) gov-
+erning the system’s behavior to changes in transition rates (see Fig. 2). We will provide two
+different proofs, one based on a direct graph-theoretic analysis and one based on the Laplace
+transform analysis. The strategy for the graph-theoretic proof is a “top-down” induction with
+a seed treating the case of one input edge less than the cyclomatic number, and a step treating
+the case of one input edge less than in the previous step. The above result holds for arbitrary
+finite graph geometry, arbitrary choices of transition rates and arbitrary variations of the input
+rates.
+     The plan of the paper is as follows. In Sec. 2 we introduce the framework of Markov
+
+
+                                                 4
+ SciPost Physics                                                                           Submission
+
+
+              Mutual Linearity                                 Kirchhoff Current Law
+
+                      i
+
+                                              Mutual
+                                          Multilinearity
+              e
+
+
+
+
+                                                                          nc
+                                                                          ř
+             ȷe “ ȷe∖i ` λieÐi ȷi                                  ȷe “          γe,i ȷi
+                                                                          i “1
+
+    Figure 2: Summarizing two types of mutual linearity among nonequilibrium station-
+    ary currents. (Left) Any stationary current ȷe (blue) in the graph can be represented
+    as a linear-affine function of an “input” current ȷi (red) when the input edge i is
+    controlled; the scalar coefficients ȷe∖i and λie←i depend both on dynamical and topo-
+    logical properties of the Markov process. This result expresses the mutual linearity
+    of currents, derived in Ref. [33]. (Right) Kirchhoff’s current law in its global form
+    provided by Eq. (6): A fundamental set of edges (red) whose removal leaves a con-
+    nected graph without cycles (a spanning tree) is fixed. The stationary current of any
+    other edge (blue) can always be represented as a linear combination of the currents
+    along the red edges (including when these edges are controlled). These choices of
+    edges are not unique, and the coefficients γe,i are either 0 or ±1 depend solely on
+    the graph topology. In this paper, we address the intermediate situation in which the
+    number of controlled edges is greater than one but less than the cyclomatic number
+    nc .
+
+
+processes and state our main result. Sections 3 and 4 are devoted to two different proofs,
+which provide different insights. The graph-theoretical proof explicitly employs the Kirchhoff
+Current Law, Eq. (1), while the Laplace transform proof allows for a generalization at finite
+time, and provides connection with the notion of current-to-current susceptibility [33]. Finally,
+in Sec. 5, we show how to recover KCL as a limiting case from MML, and make connection
+with the framework of linear response by introducing the notion of affinities. Remarkably, we
+show that the transport coefficients commonly defined close to equilibrium in fact describe the
+current-current relation arbitrarily far from equilibrium, provided that the reference transition
+rates fulfill detailed balance. Finally, in Sec. 6 we draw our conclusions and outline future
+perspectives.
+    Remark: Note that during the writing of this work, F. Khodabandehlou and coworkers have
+obtained analogous results for multigraphs [46] using different methods; our contribution
+sheds light on the conditions ensuring that the susceptibilities are well-defined and unique
+(and on the time-dependent case, in Laplace space).
+
+
+
+2    Setup and statement of the main result
+Consider a finite connected graph G with vertices x ∈ X and edges e ∈ E . We assume no
+multiple edges between two vertices. To each edge we assign a reference forward orientation
++e (or simply e) from a source to a target vertex. The incidence matrix S has entries Sxe equal
+to −1 if x is the source of e, +1 if x is the target of e and 0 otherwise, for x ∈ X and e ∈ E . We
+
+
+                                                5
+  SciPost Physics                                                                                        Submission
+
+
+
+denote −e the edge with opposite orientation and E⃗ the set of edges oriented backwards. We
+assign positive weights r : E ∪ E⃗ → R+ to forward and backward directions of an edge. For
+notational simplicity we now define E = E ∪ E⃗ . Let rA be the rates of a subset A ∪ A ⃗ ⊆ E.
+    Consider the continuous-time MarkovP chain having r as transition rates. Let R be the rate
+matrix with entries Rxy = rx←y − δx,y z∈X rz←x . The probability p(t) = (px (t))x∈X of being
+at given vertices at time t, given an initial probability p(0), evolves according to the master
+equation
+
+                                                   ṗ(t) = R p(t).                                                   (3)
+
+The absence of source or sink terms in Eq. (3) ensures probability conservation. Let π = (πx )x∈X
+be the normalized stationary distribution satisfying Rπ = 0, which by the above assumptions
+is unique. For simplicity, we also assume re ̸= 0 ⇔ r−e ̸= 0 (weak reversibility).
+    The main object in our study are the stationary currents, which for the oriented edge
+e = x ← y are given by
+
+                                         ȷe = ȷx←y = rx←y πy − ry←x πx .                                             (4)
+
+A straightforward consequence of the master equation is Kirchhoff’s Current Law (KCL),
+                                    X
+                                       Sx,e ȷe = 0 ∀x                                  (5)
+                                                 e∈E
+
+stating that the in-and-out stationary currents balance at any vertex x, locally. As we now
+detail, there also exists a global version of KCL, equivalent to Eq. (5), expressed by means of
+spanning trees, a central notion of graph theory. A spanning tree is a minimal set of edges that
+connects all vertices (and thus contains no cycles). A consequence of Eq. (5) is that for any
+spanning tree T there exist unique coefficients γe,i ∈ {0, −1, +1}, not dependent on the rates,
+such that1
+                                               X
+                                         ȷe =       γe,i ȷi ,                                (6)
+                                                        i∈E ∖T
+
+with the sum running over the set of edges not belonging to T . Notice this is equivalent to
+Eq. (1). These edges are known as chords and they form what is known as the fundamental
+set. Its cardinality nc , the cyclomatic number, is the dimension of the kernel of the incidence
+matrix S. The vectors γi = (γe,i )e∈E are null vectors of the incidence matrix, and they can
+be represented as simple oriented cycles [36]. In the following, we refer to Eq. (6) as KCL,
+as it directly follows from Kirchhoff’s Current Law and is sometimes used as an alternative
+representation of it in the literature.
+    In this work, we generalize Eq. (6) to the case where the n < nc currents are a subset of
+some fundamental set, a condition that we term admissibility (see Fig. 3). These n currents ȷi
+are termed input currents, while any other current ȷe in the graph can be regarded as output.
+    Now consider n input currents along admissible edges I = (i1 , ..., in ). Our main result is
+                                                                                                ∖
+the following. For every edge e ∈ E there exist, and are uniquely defined, a coefficient ȷe I
+and n coefficients λIe←i (for i ∈ I ), independent of the 2n rates in r I , such that when varying
+such rates
+                                                ∖
+                                                      X
+                                   ȷe (r I ) = ȷe I +   λIe←i ȷi (r I ).                       (7)
+                                                            i∈I
+    1
+      Eq. (5) tells that the vector ȷ = ( ȷe )e∈E belongs to ker S, the right nullspace of S; but the cycles associated to
+T , represented as vectors (γi )i∈E ∖T of components (γi )e = γe,i form a basis of ker S; it is then easy to check that
+the component of ȷ along γi in this basis is given by ȷi , thus yielding Eq. (6). See e.g. [38] for an algebraic proof.
+
+
+                                                            6
+ SciPost Physics                                                                               Submission
+
+
+
+                  input
+
+                                   removal
+                                                                                      ✓
+                                                                                  admissible
+                    input
+            e
+
+
+
+
+                                                    connected
+
+
+
+
+                                   removal
+                                                                                       ✗
+                                                                                  not admissible
+
+
+
+
+                                                   disconnected
+
+      Figure 3: Illustration of the admissibility concept. Top: The removal of the input edges
+      results in a connected graph, satisfying the criterion for admissibility. Bottom: The
+      resulting graph is disconnected thus the input set is not admissible.
+
+
+Notice that in general the above coefficients depend on the rest of the rates rE ∖I .
+    Before proceeding, we discuss some relevant properties of this relation and its constituents.
+                                                          ∖
+Both coefficients are unique. The affine coefficient ȷe I represents the current along edge
+e when every edge in I is removed from the graph. The linear coefficient λIe←i of ȷi (r I )
+represents a current-current susceptibility when considering the n input currents (associated to
+the edges in I ). We show that λIe←i is equal to the one-input-current susceptibility in the graph
+obtained after removing edges I ∖{i} (whose expression in terms of spanning tree polynomials
+was obtained in [33]). Furthermore, when modifying rates starting from a detailed-balance
+reference state, linear coefficients can be sampled from equilibrium fluctuations, as discussed
+in Sec. 5.2. The mutual multilinearity (MML) of Eq. (7) reduces to Eq. (2) in the case of one
+input current and to KCL when n = nc . In this latter case, the current-current susceptibility
+λIe←i , which can be obtained explicitly using graph-theoretical analysis, reduces to an algebraic
+coefficient consistent with KCL, as shown in Sec. 5.1. We stress that Eq. (7) is a property
+of stationary states, likewise is KCL; a generalization of Eq. (7) to finite-time in the Laplace
+domain is discussed in Sec. 4.
+
+2.1    Illustration
+Equipped with the main result, we briefly discuss an illustration of the mutual multilinearity
+relation before its proof is presented in the next sections. We start with two input currents
+as a natural extension of the previous result [33], keeping in mind that arbitrary sized sets of
+input currents can be considered if they are admissible.
+    Consider the graph in Fig. 4 with two input currents ȷ1 and ȷ2 , respectively supported by
+edges i1 and i2 , and output current ȷe supported by e. This graph, which has 12 states and 5
+cycles, remains connected upon removal of I = {i1 , i2 }, satisfying the admissibility criterion
+for the set of input currents. Therefore, MML establishes that
+                                        ∖
+                            ȷe (r I ) = ȷe I + λIe←i ȷi1 (r I ) + λIe←i ȷi2 (r I ).                   (8)
+                                                    1                  2
+
+
+
+                                                        7
+ SciPost Physics                                                                           Submission
+
+
+
+
+                                                                                      ȷ1
+
+
+
+
+                                                                            ȷe                 ȷ2
+
+
+
+
+      Figure 4: For the graph on the right, and its highlighted choices of input and output
+      currents, the plot shows the plane obtained from Eq. (7) by calculating the affine
+      and linear coefficients. Also, red spheres represent the values { ȷ1 , ȷ2 , ȷe } calculated
+      by solving the master equation for 200 values of input rates randomly sampled from
+      the uniform distribution U ([0, 20]4 ).
+
+
+Notice that this is the equation of a plane in the space { ȷ1 , ȷ2 , ȷe }, identified by the coefficients
+ ∖
+ȷe I , λIe←i and λIe←i , which only depend on the graph topology and rates r E \I . Therefore,
+            1           2
+any choice of input rates r I will yield a point on the plane.
+      In Fig. 4, we plot this plane and observe that all points indeed fall on the plane for random
+choices of input rates, illustrating the validity of the equation.
+
+
+
+3     Graph-theoretic steady-state proof
+We proceed by induction by proving the result for n = nc −1 and then by decreasing recursively
+the cardinality n of the admissible set of edges by steps of 1.
+    Notice that an admissible set of input currents is any set such that removal of the corre-
+sponding edges does not disconnect the graph (otherwise their complement could not contain
+a spanning tree, which by definition connects all vertices); vice-versa, the complement of any
+set of edges whose removal does not disconnect the graph contains a spanning tree, whose
+complement is a chord set. See Figure 3.
+
+3.1    Proof of inductive seed
+Consider an admissible set I of nc − 1 edges. By admissibility, one can find an edge α ∈ E ∖ I
+such that Iα := I ∪ {α} is a fundamental set of chords, i.e. such that T = E ∖ Iα is a spanning
+tree. From KCL, we know that any edge currents ȷe with e ∈ T can be expressed as a linear
+combination (with coefficients in {0, ±1}) of the currents ( ȷi )i∈Iα . Our goal is to show that
+currents ( ȷe )e∈E ∖I are linear-affine functions of the input currents ( ȷi )i∈I , with coefficients
+that depend only on the rates (r e )e∈E ∖I . From KCL, to show this, it is sufficient to prove
+that ȷα can itself be represented as a linear-affine combination of the currents ( ȷi )i∈I with
+coefficients that depend only on the rates (r e )e∈E ∖I .
+    Our strategy is to produce two linear relations between the stationary probability on one
+particular vertex x0 and the stationary currents, taking care that the coefficients depend ap-
+propriately on the rates. We can then use such relations to eliminate the stationary probability
+and one of the currents, and deploy Kirchhoff’s Current Law.
+    A useful observation to simplify the analysis below is that, for a fixed spanning tree T and
+
+
+                                                   8
+ SciPost Physics                                                                                   Submission
+
+
+
+a chord α (that we pick as defined above), there always exists a parametrization of the rates
+in terms of:
+
+   • a so-called potential u = (ux )x∈X (defined up to an arbitrary ground potential), that
+     depends only on the rates (r e )e∈T ,
+
+   • a so-called cycle affinity aα (associated to the oriented cycle Cα generated when adding
+     α to T ), that depends only on the rates (r e )e∈T and on the two rates r α
+
+such that (see App. A):
+                       rx←y
+                              = euy −ux ,                              for x ← y ∈ T ,                     (9)
+                       ry←x
+                       rx←y
+                              = euy −ux ±aα ,                          for x ← y = ±α.                    (10)
+                       ry←x
+
+With this in mind, we turn to the current-probability relation that we will use below and that
+follows straightforwardly from the definition of stationary current Eq. (4). For x ← y ∈ E :
+                                                   rx←y πy + ȷy←x
+                                            πx =                       .                                  (11)
+                                                        ry←x
+
+This suggests to define the following pseudo-potential µ and pseudo-affinity h
+                                                                ȷy←x               ȷy←x
+    µx = eux π x   for x ∈ X ,        and          hy←x = eux              = euy          for x ← y ∈ T   (12)
+                                                                ry←x               rx←y
+
+such that, from Eqs. (9) and (11),
+
+                                   µx − µy = hy←x           ∀x ← y ∈ T .                                  (13)
+
+Note that hx←y = −hy←x as easily checked, provided x ← y belongs to T . The addition
+of the chord α to the spanning tree T produces an oriented cycle Cα with k + 1 vertices
+(x0 , x1 , . . . , xk ) and k +1 edges (x0 ← x1 , x1 ← x2 , . . . , xk−1 ← xk , α = xk ← x0 ). On the chord
+α, the application of Eqs. (10) and (11) yields
+                                                                            ȷ
+                              µx0 − e−aα µxk = hα          with   hα = eux0 α .                           (14)
+                                                                           rα
+
+The field h is a pseudo-affinity in the sense that, for a chord like α, we have an extra prefactor
+e−aα in Eq. (14) compared to Eq. (13), and we also have h−α = −e aα hα as easily checked.
+    The first linear relation is found as follows. Starting from edge x0 ← x1 , we propagate
+Eq. (13) around the cycle Cα using a telescopic sum:
+                                      X                      X
+                                                                   hxp ←xp+1 .                (15)
+                                                        
+                        µxk − µx0 =         µxp+1 − µxp =
+                                        0≤p<k                      0≤p<k
+
+On the last edge α = xk ← x0 of the cycle we use, from Eq. (14), µxk = e aα µx0 − e aα hα to get
+                                                          X
+                                 e aα − 1 µx0 = e aα hα +   hxp ←xp+1 .                                   (16)
+                                         
+
+                                                            0≤p<k
+
+Notice that if the affinity vanishes (aα = 0), the above expression already yields a linear re-
+lation among the currents. We investigate this further below, but for now we assume that
+aα ̸= 0.
+
+                                                       9
+ SciPost Physics                                                                      Submission
+
+
+
+    The second linear relation comes from the normalization 1 = y∈X πy = y∈X e−uy µy .
+                                                                      P            P
+
+We root the spanning tree T in x0 by orienting all its edges towards x0 . For any vertex y ̸= x0 ,
+Eq. (13) implies that µy can be found by integrating the pseudo-affinity h along the unique
+path along T between y and x0 . Defining the vector h = (he )e∈T (with |X | − 1 entries), this
+integration procedure is encoded by a (|X | − 1) × (|X | − 1) path matrix P, with entries ∈ {0, 1},
+such that:
+                              µy = (Ph)y + µx0 for all y ̸= x0 .                              (17)
+The matrix P can be found by inverting a “core” submatrix of the incidence matrix of the graph
+(see for instance Ref. [38]). Inserting Eq. (17) in the normalization condition, we arrive at
+
+                                         1 − y∈X e−uy (Ph)y
+                                             P
+                                                  y̸=x0
+                                  µx0 =                    −uy   .                             (18)
+                                                   y∈X e
+                                                P
+
+
+   From KCL, the currents ( ȷe )e∈T are a linear combination of the chord currents ( ȷi )i∈Iα , with
+coefficients in {0, ±1}. From Eq. (12), this implies that there exists a (|X |−1)×(nc −1) matrix
+K and a vector k α with |X | − 1 entries, both depending on the rates rT , such that
+
+                                          h = K ȷ I + ȷα k α ,                                 (19)
+
+where ȷ I = ( ȷi )i∈I is the vector of input currents. From this and Eq. (14), we insert Eq. (18)
+into Eq. (16) so as to eliminate µx0 . We arrive at a linear-affine relation between ȷα and the
+input currents ȷ I :
+
+     e aα − 1
+                   X               
+                         −u
+            −uy 1 −     e y PK ȷ I y − c · K ȷ I
+                                  
+     y∈X e
+    P
+                    y∈X
+                      y̸=x0
+                                    a +u
+                                    e α x0         e aα − 1 X −uy
+                                                                          
+                                               α                      α
+                                                                  e Pk y ȷα ,                  (20)
+                                                                        
+                                 =         +c·k + P       −uy
+                                       rα          y∈X e      y∈X
+                                                                     y̸=x0
+
+where c is the vector of entries in {0, 1} such that 0≤p<k hxp ←xp+1 = c · h. The prefactor
+                                                        P
+
+of ȷα in the r.h.s. of Eq. (20), which is a function of the rates rE ∖I , cannot cancel. Indeed,
+if it were so, the l.h.s. of Eq. (20) would be zero ∀rI , implying a linear-affine interdepen-
+dence of the input currents ȷ I , with coefficients depending on rE ∖I = rT ∪{α} — but, from the
+independenceP lemma proved in App. B, this is impossible, since then the affine contribution
+(e aα − 1)/ y∈X e−uy would be 0; which is absurd.
+     To conclude, we infer from Eq. (20) that the chord current ȷα is a linear-affine combination
+of the input currents ȷ I with coefficients that are well-defined functions of the rates rE ∖I .
+Using KCL, this shows that any current ( ȷe )e∈E ∖I is a linear-affine combination of the input
+currents ȷ I with coefficients that are functions of the rates rE ∖I , which ends the proof of the
+initialization step of the recursion.
+
+    Remark: the “cycle equilibrium” case when aα = 0 is even simpler, and does not involve
+the normalization condition. Eq. (16) indeed then reads hα = −c · h which, using Eq. (19),
+yields                           ux
+                                 e 0
+                                              
+                                     + c · k α ȷα = −c · K ȷ I ,                      (21)
+                                  rα
+which, following the same line of arguments as above, allows one to conclude.
+
+
+
+                                                  10
+ SciPost Physics                                                                                                  Submission
+
+
+
+3.2     Proof of inductive step
+By assuming that mutual linearity holds for a set of n < nc input edges, we want to prove that
+it also holds for n − 1.
+     Consider I a set of n − 1 input edges under the single assumption that its removal does not
+disconnect the network, i.e. it is admissible. Our aim is to show that the current ȷe of any edge
+e ∈ E ∖ I can be decomposed in a linear-affine way on the ȷi∈I with coefficients independent
+on the rates r I . To show this, we distinguish two cases.
+     Let us first assume that e is such that I ∪ {e} is also admissible, and define e2 := e. Since
+|I | ≤ nc −2, it is always possible to find another edge e1 ∈/ I ∪{e2 } such that both I1 := I ∪{e1 }
+and I2 := I ∪ {e2 } are admissible. Since we assumed mutual linearity holds at the level of n
+input edges, the (output) current supported by an edge e2 ∈      / I1 can be expressed as
+                                     ∖
+                                                     X
+                                                        I
+                             ȷe2 = ȷe I1 (rE ∖I1 ) +   λe 1←i (rE ∖I1 ) ȷi1 ,                   (22)
+                                                   2                                  2           1
+                                                                         i1 ∈I1
+
+where the right-hand side is linear-affine on the input currents with coefficients that depend
+on the rates of edges in E ∖ I1 . Similarly, for the edge e1 , because I2 is admissible, we can
+write
+                                  ∖
+                                                   X
+                                                      I
+                           ȷe1 = ȷe I2 (rE ∖I2 ) +   λe 2←i (rE ∖I2 ) ȷi2 .                (23)
+                                                   1                                  1           2
+                                                                         i2 ∈I2
+
+      We can now replace Eq. (23) on the right-hand side of (22) and collect ȷe2 , yielding
+                                                           
+                     1 − λIe 1←e (rE ∖I1 ) λIe 2←e (rE ∖I2 ) ȷe2 =
+                            2   1                          1     2
+                                    ∖                                                         ∖
+                                        I1
+                                ȷe (rE ∖I1 ) + λIe 1←e (rE ∖I1 ) ȷe I2 (rE ∖I2 )
+                                 2                2   1            1
+                                   X                                                   
+                                        I1                  I1                I
+                                +     λe ←i (rE ∖I1 ) + λe ←e (rE ∖I1 ) λe 2←i (rE ∖I2 ) ȷi .                           (24)
+                                                       2                          2       1               1
+                                        i∈I
+
+                                              I                          I
+The multiplicative factor 1 − λe21←e1(rE ∖I1 ) λe12←e2(rE ∖I2 ) cannot vanish (for any value of the
+rates), as shown in App. C, which proves the multilinearity of ȷe2 for the input set I . Indeed
+from Eq. (24), ȷe2 is expressed as a linear-affine combination of the currents ȷi∈I with coeffi-
+cients depending only on the rates of the transitions in (E ∖ I1 ) ∪ (E ∖ I2 ) = E ∖ I .
+    The argument works for any e2 such that I ∪ {e2 } is admissible. Consider now instead an
+edge e such that removing I ∪ {e} disconnects the network. We can fix a full set of chords
+that includes I (which is always possible since I is admissible). Since the removal of e and I
+disconnect the network, by definition, e belongs to a cocycle of the network [38]. If it is the
+only component of the cocycle, it means that e is a bridge and the current ȷe is always zero. If
+instead the cocycle contains other edges, these are chords forming a subset I ′ ⊆ I (because
+removing I ∪ {e} disconnects the network). Then as a property of cocycles, the current ȷe can
+be written as a linear combination of the ȷi ′ ∈I ′ , with coefficients ±1.
+    To summarize, in the second case where I ∪{e} is not admissible, the standard KCL directly
+gives the result (with rate-independent linear-affine coefficients), while in the first case (I ∪{e}
+admissible) the coefficients do depend on the rates and the derivation did require the recursion
+hypothesis at step n, completing the inductive step.
+    We conclude with a remark. Eq. (24) implies a recursive relation among susceptibilities
+associated with different input sets. Consider, for instance, the case where the input set consists
+of a single edge, I = {e3 }. In this case we read from Eq. (24):
+                                               I                                  I                           I
+                                             λe21←e3 (rE ∖e1 ,e3 ) + λe21←e1 (rE ∖e1 ,e3 )λe12←e3 (rE ∖e2 ,e3 )
+               λIe ←e (rE ∖e3 ) =                                    I                                I
+                                                                                                                        (25)
+                  2     3
+                                                               1 − λe21←e1 (rE ∖e1 ,e3 )λe12←e2 (rE ∖e2 ,e3 )
+
+
+                                                                         11
+ SciPost Physics                                                                       Submission
+
+
+
+On the left hand side, we have the susceptibility onto edge e2 of edge e3 when taken as single
+input edge. Notice that this generally depends on r 1 and we can trace this dependence through
+            I                        I
+the terms λe12←e3 (rE ∖e2 ,e3 ) and λe12←e2 (rE ∖e2 ,e3 ) on the right hand side. Consider now pruning
+the graph from edge e1 (or equivalently setting rates r 1 identically to zero). In this case, no
+                                                   I                   I
+current flows through edge e1 and thus λe12←e3 (rE ∖e2 ,e3 ), λe12←e2 (rE ∖e2 ,e3 ) → 0. As a result,
+Eq. (25) reduces to:
+                              λIe ←e (rE ∖e3 )           = λIe 1←e (rE ∖e1 ,e3 )                 (26)
+                                 2   3           r1 =0         2   3
+
+
+where the right hand side is unaffected by the pruning as it does not depend on r 1 . Inter-
+estingly, Eq. (26) tells that the susceptibility λe2 ←e3 with input set I1 = I ∪ {e1 } on the full
+graph can be obtained from the corresponding susceptibility with smaller input set I on a
+smaller graph (pruned by edge e1 ). As we will prove in Sec. 4.3, this recursive structure gen-
+eralizes to arbitrary input set sizes. Thus, susceptibilities can be evaluated using the case of
+a single input current—where simpler analytical expressions have been established [33]—by
+considering the graph with all other input edges removed.
+
+
+
+4     Laplace-space finite-time proof
+MML in Eq. (7) is a property of steady state: already with one input current, the study of simple
+examples shows that it does not hold if we were to replace stationary currents by finite-time
+ones [33]. Similarly, with nc input currents MML reduces to KCL (see Sec. 5.1), which only
+holds for stationary currents.
+    In this section, we show how one can generalize Eq. (7) by going to the Laplace domain,
+introducing a frequency variable ς conjugated to time t. By sending ς to zero (equivalent to
+sending t to infinity), this provides another proof of Eq. (7) with an explicit expression of the
+current-current susceptibility λIe←i . Interestingly, the proof offers a physical representation of
+such a susceptibility: λIe←i is equal to the susceptibility λ̃ie←i for one input current (along i)
+and one output current (along e) in a modified graph where every edge of I (apart from i) is
+removed. Such a representation is also valid at non-zero ς. This allows one to represent λIe←i
+using tree ensembles, using results that we derived in Ref. [33].
+
+4.1   Settings
+The case of non-stationary currents can be understood by turning to the frequency domain,
+as follows. The probability distribution at time t is the solution p(t) = exp(tR)p(0) to the
+master Requation, given an initial probability distribution p(0). Defining the Laplace transform
+         ∞
+p̂(ς) = 0 dt e−ςt p(t) (and similarly for other functions of time), one arrives at the expression
+p̂(ς) = (ς1 − R)−1 p(0). Both the Laplace transform p̂(ς) and the resolvent (ς1 − R)−1 are
+defined for ς ∈ C ∖ Sp R, i.e. for complex numbers not belonging to the spectrum of R.
+    We first prove a Laplace-domain generalization of MML:
+                                              ∖
+                                                        X
+                            ȷ̂e (r I , ς) = ȷ̂e I (ς) +   λ̂Ie←i (ς) ȷ̂i (r I , ς)           (27)
+                                                         i∈I
+
+and then analyze the ς → 0 limit in Sec. 4.3 where we recover Eq. (7) (holding at stationarity
+t → ∞).
+
+4.2   Proof of mutual multilinearity
+Proving Eq. (27) is equivalent to show the existence of constants λ̂Ie←i (ς)’s such that the gra-
+dient of both sides w.r.t. the 2n variables r I is the same. In other words, denoting λ̂I (ς) the
+
+                                                    12
+ SciPost Physics                                                                                   Submission
+
+
+
+vector of n components λ̂I (ς) i = λ̂Ie←i (ς) for i ∈ I , we have to show that
+                                   
+
+                                                                     X
+          ∃λ̂ I (ς) : ∀k ∈ I , ∀ε ∈ {−1, +1}, ∂ rε k ȷ̂e (r I , ς) =   λ̂Ie←i (ς) ∂ rε k ȷ̂i (r I , ς) .       (28)
+                                                                                    i∈I
+
+The key technical ingredient is the expression, obtained in Ref. [33], of the partial derivative
+of currents with respect to rates rε k (with ε ∈ {−1, +1}), as proportional to a matrix element
+of the resolvent of V⊤ S:
+                                                                   −1
+                       ∂ rε k ȷ̂i (ς) = ε ς s(εk) p̂(ς) i ς1 + V⊤ S    k .                 (29)
+
+Here s(+k) (resp. s(−k)) is the source (resp. target) of edge k, and S and V are respectively
+the incidence and the current matrices of dimensions X × E and entries2
+
+                                      Sx,e = δx,s(−e) − δx,s(+e)                                               (30)
+                                      Vx,e = r−e δx,s(−e) − r+e δx,s(+e) ,                                     (31)
+
+where in this section we define X = |X | and E = |E | for compactness. We also use the bra-
+ket notation: |k〉 (resp. 〈k|) denotes the canonical column (resp. line) vector along the k-th
+direction.
+    The interest of Eq. (29) is that the prefactors of the matrix element of the resolvent often
+vanish by compensation. And indeed since Perron–Frobenius ensures 〈s(εk)|p̂(ς)〉 > 0, we
+see from Eq. (28) that we have to prove
+                                             −1      X                          −1
+           ∃λ̂I (ς) : ∀k ∈ I ,  e ς1 + V⊤ S      k =      λ̂Ie←i (ς) i ς1 + V⊤ S     k      (32)
+                                                                        i∈I
+
+(notice the essential disappearance of the sign ε), where λ̂I (ς) has to be independent on the
+2n rates r I . Now, denoting M = ς1 + V⊤ S and (M−1 ) I,J the submatrix of M−1 where only
+lines and columns of tuples of distinct indices I and J are kept, we see that the condition of
+Eq. (32) transforms into a matricial equation for the vector λ̂I (ς):
+                                             ⊤                      ⊤
+                                        M−1 I ,e = M−1 I ,I λ̂I (ς) .                                          (33)
+                                                                                                           ⊤
+    We now prove that this equation can be solved by inverting the n × n matrix M−1 I ,I , and
+that the result does not depend on the rates r I of the input currents. A central identity to do
+so is Jacobi’s formula, which states that for an invertible matrix B, one has
+                                                                     det B∖ (J,I)
+                                        det (B−1 ) I,J = ϵ IJ                        ,                         (34)
+                                                                            det B
+with B∖ (J,I) the submatrix of B where lines J and columns I are removed, and ϵ IJ ∈ {−1, +1}
+is a sign that depends on the tuples I and J:
+
+                                                       i∈I i+       j∈J j
+                                                   P            P
+                                      ϵ I J = (−1)                          σ(I)σ(J) .                         (35)
+
+Here σ(I) is the signature of I, seen as the permutation of its elements sorted by increasing
+order (for instance I = (1, 4, 2) is seen as the permutation of (1, 2, 4) so that σ(I) = −1). We
+thus have3
+                                                            ⊤
+                                       det                                     det
+                                                                                            
+              ⊤      det M ∖ (I ,I )       ς1 + (V∖ (·,I ) ) S∖ (·,I )             ς1 − R ∖I
+     det M−1 I ,I =                  =                                   = ς−n              , (36)
+                       det M                det ς1 + V⊤ S                       det ς1 − R
+                                                              
+
+   2
+    The current writes as ȷ(t) = −V⊤ p(t) and the rate matrix as R = −SV⊤ . See Refs  [33,45,47] for example uses.
+   3
+    We use Sylvester’s determinant theorem to write: det ς1 + (V∖ (·,I ) )⊤ S∖ (·,I ) = ς E−n−X det ς1 − R∖ I , and
+det M = ς E−X det(ς1 − R).
+
+
+                                                          13
+ SciPost Physics                                                                       Submission
+
+
+
+where R∖ I is the rate matrix of a reduced network where the n input edges I are removed.
+                  ⊤
+The matrix M−1 I ,I is thus invertible for complex ς not belonging to the spectra of R or R∖ I
+and thus, since these matrices are both stochastic, in a finite vicinity of 0 in C ∖ {0} (which
+will allow us to study the ς → 0 limit safely).
+    Eq. (33) is a linear equation of the form y = B x with x and y two vectors of length n
+and B a n × n invertible matrix. Cramer’s rule gives its solution in a determinantal form: the
+component i of x writes as x i = det Bi / det B where Bi is obtained replacing column i of B by
+the vector y. In the case of Eq. (33), the vector on the l.h.s. is equal to the column labelled by e
+of the matrix on the r.h.s. Cramer’s rule thus offers an explicit expression of the components
+of the vector λ̂I (ς) as
+                                                    
+                                 det M−1 I |i7→e , I
+                    λ̂Ie←i (ς) =                                                             (37)
+                                   det M−1 I ,I
+                                                           det ς1 + V⊤ S ∖ (I ,I | )
+                                                                        
+                               = (−1)i+e σ(I ) σ(I |i7→e )
+                                                                                  i7→e
+                                                                                       ,       (38)
+                                                           det ς1 + V S ∖ (I ,I )
+                                                                        
+                                                                     ⊤
+
+
+where I |i7→e denotes the tuple obtained from I by replacing label i by e. For the second line we
+make use of Jacobi’s identity, Eq. (34). From Eq. (38), we see explicitly that the susceptibility
+λ̂Ie←i (ς) is independent of the rates of the input edges I , since V⊤ S depends on the two rates r i
+only through its line i. (This is not obvious to read from Eq. (37) since the matrices involved
+on its r.h.s. depend explicitly on the rates r i .) This ends the proof of the Laplace-domain
+multilinearity, Eq. (27).
+                                     ∖
+     Note that the affine constant ȷ̂e I (ς) in Eq. (27) is simply given by the (Laplace) current for
+a reduced graph with the edges in I removed, since ȷ̂i (r I , ς) is 0 when the rates r I are sent
+to 0.
+
+4.3   Taking the limit ς → 0 and mapping to the one-input-current case
+Using Sylvester’s determinant theorem, the denominator of the expression of Eq. (38) of the
+Laplace-domain susceptibility λ̂Ie←i (ς) rewrites as
+
+                      det ς1 + V⊤ S ∖ (I ,I )      = ς E−n−X det(ς1 − R∖ I )                    (39)
+                                   
+
+                                                   ς→0
+                                                    ∼ ς E−n−X +1 tr adj − R∖ I                  (40)
+                                                                                   
+
+
+where the trace of the adjugate of −R∖ I can be expressed as a sum of weights of rooted
+spanning trees of G∖ I , the Markov chain graph where edges from I are removed (this is
+an example of relation between determinants and spanning tree expansions [48], and see
+e.g. Refs. [33, 45, 49] for recent applications in the field of continuous-time Markov chains).
+    Understanding the ς → 0 behavior of the numerator of Eq. (38) proves to be a little trickier.
+Consider the graph G˜ obtained from G by removing the edges in I ∖ {i}, where we fix for
+a moment an input edge i ∈ I . This defines an auxiliary one-input-current problem, with
+input edge i and output edge e in the reduced graph G˜. The graph G˜ has X vertices and
+Ẽ = E − n + 1 edges, and is connected (since removing I does not disconnect G ). As a
+special case of Eq. (38), the corresponding Laplace-domain current-current susceptibility, that
+we denote λ̃ie←i (ς), is expressed as
+
+                                                    det ς1 Ẽ + Ṽ⊤ S̃ ∖ (ı̃,ẽ)
+                                                                      
+                             λ̃ie←i (ς) = (−1)ı̃+ẽ                                             (41)
+                                                    det ς1 Ẽ + Ṽ⊤ S̃ ∖ (ı̃,ı̃)
+                                                                      
+
+
+
+                                                    14
+  SciPost Physics                                                                                       Submission
+
+
+
+where S̃ is the incidence matrix of G˜ and Ṽ its corresponding weighted version, defined simi-
+larly to Eqs. (30)-(31) (also, to facilitate the reading until the end of this section, we make ex-
+plicit the dimension of identity matrices as indices). The integers ı̃ and ẽ are the indices of input
+and output edges in the reduced set of edges of G˜, so that4 (−1)ı̃+ẽ = (−1)i+e σ(I ) σ(I |i7→e ).
+Using Sylvester’s determinant theorem as previously, we have:
+                                                                      (39)
+            det ς1 Ẽ + Ṽ⊤ S̃ ∖ (ı̃,ı̃) = ς Ẽ−1−X det(ς1X − R̃∖ ı̃ ) = det ς1 E + V⊤ S ∖ (I ,I )                 (42)
+                                                                                       
+
+
+where we used R̃∖ ı̃ = R∖ I . Also, by direct inspection of definitions, we have:
+
+                             ς1 Ẽ + Ṽ⊤ S̃ ∖ (ı̃,ẽ) = ς1 E + V⊤ S ∖ (I ,I | ) .                                  (43)
+                                                                  
+                                                                                  i7→e
+
+
+Collecting these results, we finally obtain
+
+                                                λ̂Ie←i (ς) = λ̃ie←i (ς) .                                          (44)
+
+In other words, the susceptibility of the output current e in the input current i ∈ I in the graph
+G is equal to the (one-input-current) susceptibility for the same input and output edges but in
+the reduced graph G˜ where input edges of I other than i are removed. Eq. (44) thus provides
+a interesting physical representation of the susceptibility in the Laplace-space mutual linearity
+of Eq. (27): the susceptibility λ̂Ie←i (ς) of the full problem can be computed from that of a
+simpler problem (one input and one output current, in a reduced graph).
+    Coming back to the ς → 0 asymptotics, Eq. (44) implies that λIe←i = limς→0 λ̂Ie←i (ς) exists
+and can be expressed, following Ref. [33], as a sum of weights of trees constructed from the
+reduced graph G˜. This ends the Laplace-space proof of the stationary MML [Eq. (7)], and
+since Eq. (44) extends to the ς → 0 limit, also provides a representation of the stationary
+susceptibility λIe←i as the one, λ̃ie←i , of a simpler problem.
+
+
+
+5       Further developments
+
+5.1     Recovering Kirchhoff’s Current Law
+MML in Eq. (7) generalizes KCL in the sense that it extends the validity of Eq. (6) to subsets of
+currents that do not constitute a fundamental set, cf. Fig. 2. Importantly, we now show that
+Eq. (7) yields back Eq. (6) when the input set I is fundamental as a result of the terms ȷe∖I
+vanishing and the terms λIe←i reducing to 0 or ±1.
+    Let I be a fundamental, and therefore also admissible, set. It is immediate that ȷe∖I = 0
+for all edges e since there are no stationary currents on a tree.
+    Regarding the susceptibility λIe←i of a current over e with respect to i ∈ I , we have shown
+in Sec. 4.3 that it is equivalent to the susceptibility e ← i when i is a single input current in
+the reduced graph obtain from G by removing the edges I ∖ {i}. Then, using the expression
+derived in Ref. [33] of such a single-input-current susceptibility in terms of spanning tree
+polynomials, we arrive at:
+                           ∖s(+e)→s(+i)    ∖s(+e)→s(−i)                           ∖s(−e)→s(+i)    ∖s(−e)→s(−i)
+                          τ∖I ,e        − τ∖I ,e                                 τ∖I ,e        − τ∖I ,e
+ λIe←i = rs(−e)←s(+e)                                          − rs(+e)←s(−e)                                          ,
+                                          τ∖I                                                    τ∖I
+                                                                                                                   (45)
+    4
+     From the definition of ı̃ and ẽ, we see that (−1)ı̃−ẽ = (−1)i−e (−1)ℓ where ℓ is the cardinality of J = I ∩]i, e[,
+the set of elements of I strictly comprised between the two integers i and e. Also, the composition of I |i7→e and of
+the inverse of I (here, as discussed after Eq. (35), a sequence of integers is seen as the permutation of its elements
+sorted by increasing order) is a cycle permutation of length ℓ + 1, because it shifts {e} ∪ J to J ∪ {i}. Its signature
+σ(I −1 ◦ I |i7→e ) = σ(I )σ(I |i7→e ) is thus equal to (−1)ℓ , which proves the announced result.
+
+
+                                                          15
+ SciPost Physics                                                                  Submission
+
+
+
+
+                                                                      T´
+
+
+
+
+                   e
+          i
+
+
+
+
+                                                               i
+
+                                                                       e
+               C
+
+                     T´                T`                                            T`
+
+
+    Figure 5: Resulting graph after removal of I and e Left: e and i do not belong to the
+    same cycle C , notice that i is fully contained by T − . Right: Since e and i belong to
+    the same cycle, i is in between both trees T ± .
+
+
+where                                        X X
+                                    τ∖I :=              ω(Tx )                                (46)
+                                             x Tx ⊆G˜
+
+is the sum over all vertices x and over all rooted spanning trees Tx in G˜ := G ∖ I , of the
+product of the transition rates ω(Tx ) belonging to Tx ; also,
+                                ∖x→y
+                                         X        X
+                              τ∖I ,e :=                     ω(Tx )                     (47)
+                                         x Tx ⊆G ′ :{x→y}⊆Tx
+
+is a similar sum of polynomials for the graph G ′ := (G˜ ∪ {x → y}) ∖ {e} where an auxiliary
+edge x → y of rate 1 is introduced while all edges in I and edge e are removed, and only
+rooted spanning trees that contain this auxiliary edge are considered. We will use Eq. (45) to
+explicitly obtain the susceptibilities in this case.
+    Since I constitutes a fundamental set, the first step of removing I ∖ {i} leads to a single
+cycle C and possibly branching leaves. Secondly, removing i results in a tree T = E ∖ I .
+Lastly, two disconnected trees sprout from the removal of e, T + and T − . The former contains
+s(+e) ⊆ T + while s(−e) ⊆ T − , see Fig. 5.
+    We first consider the case e ∈/ C (left panel of Fig. 5), in which case s(±i) belong to one
+                           −
+of the two trees. If i ⊆ T ,
+                      ∖s(+e)→s(+i)      ∖s(+e)→s(−i)              X
+                                                     = ω Ts+(+e)      ω Tx−                (48)
+                                                                            
+                    τ∖I ,e          = τ∖I ,e
+                                                                    x∈T −
+
+because the added edges s(+e) → s(±i) act as bridges between the tree T + and T − , while
+                               ∖s(−e)→s(+i)    ∖s(−e)→s(−i)
+                              τ∖e,I         = τ∖e,I         =0                                (49)
+
+because s(±i) and s(−e) belong all to T − and the resulting graph is disconnected (no edge
+connects T + and T − ) and therefore has no spanning trees. Consequently, λIe←i = 0, and
+similarly for i ⊆ T + .
+    The second case, where e ∈ C , results in the source and target of +i belonging to distinct
+trees. If s(+i) ⊆ T − ,
+                           ∖s(+e)→s(+i)               X
+                                         = ω Ts+(+e)       ω Tx− ,
+                                                                 
+                         τ∖I ,e
+                                                         x∈T −
+                            ∖s(−e)→s(−i)                 X
+                                         = ω Ts−(−e)             ω Tx+ ,                      (50)
+                                                                      
+                           τ∖I ,e
+                                                         x∈T +
+
+
+
+                                              16
+ SciPost Physics                                                                         Submission
+
+
+
+and
+                                 ∖s(+e)→s(−i)    ∖s(−e)→s(+i)
+                                τ∖e,I         = τ∖e,I         = 0.                                 (51)
+Plugging these values in Eq. (45), we identify the numerator as equivalent to τ∖I and therefore
+λIe←i = 1. Finally, if s(+i) ⊆ T + , the same procedure leads to λIe←i = −1.
+    In summary, for an input set that is also fundamental, any output current can be written
+as a linear combination of input currents with coefficient 0 when e does not lie in the same
+cycle of i in the graph E ∖ (I ∖ {i}), and ±1 otherwise, with sign depending on the convention
+directions, which is Eq. (6).
+
+5.2   Connection to equilibrium fluctuations
+Here we show that when currents are controlled starting from an equilibrium state, the suscep-
+tibility can be interpreted in terms of currents’ covariances at equilibrium. This brides with and
+extends known results in so-called linear regime theory, but in a fully nonequilibrium context.
+     First we need this:
+                                        〈Je (t)〉
+                               ȷe = lim                                                            (52)
+                                   t→∞      t
+                                        〈Je (t)Je′ (t)〉c
+                             cee′ = lim                                                            (53)
+                                   t→∞         t
+                                        〈Je (t)Je′ (t)〉 − 〈Je (t)〉〈Je′ (t)〉
+                                  = lim                                                            (54)
+                                   t→∞                   t
+where Je (t) are the cumulated currents up to time t along the stochastic process and 〈·〉 denote
+sample averages. When the sample mean is over an equilibrium process we have ȷe = 0 and
+                eq
+denote cee′ = cee′ . Notice that by definition covariances are symmetric: cee′ = ce′ e .
+                                                                                 eq
+    The main result of this section is that, starting from equilibrium (where ȷe = 0 for all e,
+thus the rates satisfy detailed balance) and perturbing the rates r i of an input current arbi-
+trarily far from equilibrium, the following linear response relation among currents holds
+                                                       eq
+                                                      cei
+                                               ȷe =    eq ȷi ,                                     (55)
+                                                      cii
+        eq
+where ce,i are the currents’ steady covariances at equilibrium. Therefore, properties of response
+arbitrarily far from equilibrium can be inferred from equilibrium fluctuations.
+    The proof of the result is straightforward given the results of Refs. [33, 38] and linear
+response theory (see e.g. [50] for a review and [51] for closely related results). For a moment,
+let us parametrize the rates according to Eqs. (9)-(10), where we fix the potentials ux∈X and
+take the cycle affinities a = (aα ) (where α runs through chords) as control parameters to
+drive the dynamics out of the equilibrium reference state a = 0. The following fluctuation-
+dissipation relation holds (coming from linear response theory, see App. D for a full derivation):
+
+                                           ∂ ȷe     1 eq
+                                                   = ceα .                                         (56)
+                                           ∂ aα eq. 2
+
+    Consider first the case of one admissible input current i (that can thus be taken as a chord).
+                                                                    ∖
+From the results of Ref. [33], there exist two constants ȷe i and λie←i such that for all values
+                                        ∖
+of the rates r i , we have ȷe (r i ) = ȷe i + λie←i ȷi (r i ). If we parametrize the rates by fixing the
+potentials ux∈X and affinities aα̸=i , while controlling the currents through ai , this also means
+that we have (with the same constants)
+                                                  ∖
+                                      ȷe (ai ) = ȷe i + λie←i ȷi (ai ).                            (57)
+
+
+                                                      17
+ SciPost Physics                                                                                                  Submission
+
+
+                                                                                           ∖
+For rates satisfying detailed balance (a = 0) we have ȷe i |eq = 0. Taking the derivative of
+                                                                                  eq  eq eq
+Eq. (57) with respect to ai , using Eq. (56) and rearranging terms we obtain λie←i = cei /cii
+and thus Eq. (55).
+    The generalization to an arbitrary number of admissible input rates being modified is
+straightforward. Multilinearity reads
+                                              ∖
+                                                    X
+                                 ȷe (r I ) = ȷe I +   λIe←i ȷi (r I ) .                 (58)
+                                                                         i∈I
+
+We parametrize the rates with a potential ux∈X and cycle affinities a, and we consider equi-
+                                                                            eq              eq
+librium reference rates (a = 0). We define the vectors λIe = (λIe←i )i∈I , c Ie = (ce,i )i∈I ,
+                                                        eq
+ȷ I = ( ȷi )i∈I , aI = (ai )i∈I , and the matrix CI = (ck,i )k,i∈I . Controlling currents through
+aI , Eq. (58) implies5
+                                                                                 eq
+                                                                   X
+                                                      ȷe (aI ) =         λIe←i        ȷi (aI ).                         (59)
+                                                                   i∈I
+
+Since I is admissible, it can be taken as a subset of chords, that we fix and this allows one
+to use Eq. (56) in this expression, which yields c Ie = CI λIe . Now, we remark that CI is a
+principal submatrix of the full (i.e. all-chord) response matrix between cycle affinities and
+chord currents, which is symmetric definite positive (see e.g. [38]). Hence CI has the same
+property and is invertible. This allows one to write λIe = C−1  I
+                                                            I c e and we obtain finally
+
+                                                      ȷe (r I ) = cIe · CI −1 ȷ I (r I ) ,                              (60)
+
+valid when controlling input currents starting from an equilibrium reference point.
+    The physical relevance of our result is that it is operationally accessible: the currents’
+susceptibilities do not have to be obtained analytically, but can be sampled from a realization
+of the process.
+
+
+
+6        Conclusion and Perspectives
+Control over multiple transition rates is a scenario that emerges across disciplines. For ex-
+ample, tuning the concentration of chemicals in biochemical networks often affects several
+transition rates simultaneously. The same occurs when adjusting the temperature of a reser-
+voir in a heat engine, modifying energy barriers in activated processes such as protein folding
+or ion transport, or altering transcription factors in gene expression dynamics. Understand-
+ing how stationary currents reorganize in response to changes in several transition rates is
+therefore central.
+    In this work, we have uncovered a mutual linear-affine relation between stationary currents
+when controlling multiple transition rates. Borrowing approaches and terminology from graph
+theory, we have considered a subset of chord currents as input currents, whose rates can be
+arbitrarily and independently manipulated. In this context, the Kirchhoff Current Law is a tenet
+of the theory of continuous-time Markov chains, which states that a complete set of chord
+currents fully specifies the currents at stationarity. Our result generalizes Kirchhoff Current
+Law by drawing a (linear-affine) relation between any stationary current and an incomplete
+set of chords. As such, it also generalized the recent result put forward by us in Ref. [33] for
+the case of a single input current.
+    Two noteworthy insights emerging from the ideas herein merit further discussion. First,
+as seen in the illustration of Sec. 2.1, MML bears a geometrical interpretation: it states the
+    5                                           eq
+        In this expression, explicitly, λIe←i        is given by λIe←i evaluated for cycle affinities aα = 0, ∀α ∈
+                                                                                                                 / I.
+
+
+                                                                     18
+ SciPost Physics                                                                      Submission
+
+
+
+existence of a hyperplane in the space of input and output currents, on which all possible
+values of { ȷi∈I , ȷe } lie for any choice of input rates; nevertheless, the allowed points may form
+a bounded domain within the hyperplane, constrained by factors such as mean first-passage
+times between source and target of input edges, and its exact shape remains to be explored.
+Second, we have seen that susceptibilities can be calculated from the single input current case
+in the graph pruned from all other input currents; indicating that the influence of an isolated
+input current on the output is preserved once more edges are added to the graph and the
+corresponding currents are treated as input.
+    Our result is remarkably general, being valid for arbitrary finite network geometries and
+arbitrarily large changes of rates. Yet, we envisage a few limitations which call for future work.
+Extending our results to the framework of open (driven) systems is an interesting direction.
+In the case of a single input current we have proved that the linearity extends to the case of
+open systems despite the fact that global conservation of probability breaks down [33]. This
+suggests that such a generalization is viable also for multiple input currents and could lead
+to interesting applications in the field of adaptive physical networks such as flow, elastic and
+resistor networks [52–54]. A second, more far-fetched generalization is to incorporate non-
+linear interacting networks. This is the case of biochemical and metabolic networks, where
+interactions involve more than two chemicals (for example due to autocatalytic motifs [55])
+and therefore maps to hypergraphs instead of Markov chains. Despite the apparent profound
+difference, recent work has uncovered similarities between noninteracting and interacting net-
+works [38], which encourage one to pursue this path.
+    We conclude with a final, practical remark. Despite the result presented in this work rep-
+resenting a generalization from single to multiple input currents, it does not include the case
+of macroscopic input currents that are a linear combination of multiple edge currents. For ex-
+ample, suppose the case where two edge currents ȷ1 and ȷ2 are not independently measurable,
+but ȷ = ȷ1 + ȷ2 is measurable. Our result states that
+                                  ∖          {1,2}         {1,2}
+                            ȷe = λe {1,2} + λe,1     ȷ1 + λe,2     ȷ2                          (61)
+                                  ∖          {1,2}  {1,2}       {1,2}
+                              = λe {1,2} + (λe,1 − λe,2 ) ȷ1 + λe,2 ȷ                          (62)
+
+and we immediately observe that we cannot get rid of the unmeasurable current ȷ1 unless
+ {1,2}   {1,2}
+λe,1 = λe,2 . As pointed out in Ref. [33], however, the result easily extends to the case of
+macroscopic output currents that are a linear combination of multiple edge currents.
+
+
+
+Acknowledgements
+We warmly thank Faezeh Khodabandehlou and Christian Maes for discussions. MP is grateful
+to Villa ai Colli Research Institute for hospitality.
+
+Funding information PH was supported by the project INTER/FNRS/20/15074473 funded
+by F.R.S.-FNRS (Belgium) and FNR (Luxembourg). SDC and VL acknowledge support from
+IXXI, CNRS MITI, CNRS Tremplin and the ANR-18-CE30-0028-01 grant LABS.
+
+
+
+Appendices
+
+
+
+
+                                                   19
+ SciPost Physics                                                                        Submission
+
+
+
+A    Construction of potentials and affinities from transition rates
+
+Given a spanning tree T with an arbitrarily fixed root x0 , we define for x ← y ∈ T the local
+                      rx←y
+affinity Ax←y := log ry←x . For any vertex z ∈ X , there is a unique path in T going from z to
+x0 , that we denote Pz = (x0 ← x1 , x1 ← x2 , . . . , x p ← z). The potential in z is defined as the
+“integral” of the local affinity along this path
+                                                X
+                                        uz =            Ax←y .                                 (A.1)
+                                                  x←y∈Pz
+
+This implies that the local affinity is the (discrete) “gradient” of the potential: uy − ux = Ax←y
+for x ← y ∈ T . This relation ceases to be true in general on a chord x ← y = α ∈ E ∖ T
+(unless the Wegscheider condition is satisfied along its associated cycle Cα ). The so-called
+                         rx←y
+cycle affinity aα := log ry←x − uy + ux quantifies precisely how it is broken. The potential and
+cycle affinity so defined verify the relations of Eqs. (9)-(10) of the main text. Note that the
+potential depends only on the spanning-tree rates (r e )e∈T , while the cycle affinity depends on
+these rates and on the rates r α of the chord (more specifically, it depends on the cycle rates
+(r e )e∈Cα ).
+
+
+
+B    Linear independence of admissible currents
+An admissible set I of edges can be represented as a subset of a fundamental set of chords
+associated to a spanning tree T (i.e. I ⊆ E ∖ T ). It is thus natural to expect that their
+corresponding currents ( ȷi )i∈I are linearly independent when varying the transition rates of
+the continuous-time Markov chain. The following lemma makes this statement precise.
+   Independence lemma: Fix the rates rE ∖I of the transitions not in the admissible set.
+Then, denoting by ȷi (rI ) the stationary current seen as a function of the remaining rates rI ,
+                                  X
+      ∃λ0 , (λi )i∈I : ∀rI , λ0 +    λi ȷi (rI ) = 0    ⇒       λ0 = 0 and ∀i ∈ I , λi = 0 .
+                                  i∈I
+
+
+   Proof — Sending the rates rI to 0, the stationary currents ( ȷi )i∈I also go to 0, which implies
+ 0
+λ = 0. Now, fix i ∈ I . This chord is associated to a cycle Ci which does not involve the other
+edges in I . Sending (r ι )ι∈I ∖{i} to 0 sends ( ȷι )ι∈I ∖{i} to 0, and by hypothesis, we are left with
+
+                                       ∀r i , λi ȷi (rI ) r             =0.                      (B.1)
+                                                              ι̸=i =0
+
+
+For any choice of rE ∖I , one can find two rates r i such that the Wegscheider condition along
+cycle Ci is not satisfied. For such a choice, one has ȷi ̸= 0. This implies that λi = 0, and since
+this reasoning can be done for every i ∈ I , this ends the proof. □
+    Remark — This independence lemma implies that the linear-affine decomposition of Eq. (7)
+of a current ȷe on a set of admissible currents ȷ I with coefficients depending on the rates rE ∖I
+is unique, and this for any value of rE ∖I .
+
+
+
+C    Proof that 1 − λIe 1←e (rE ∖I1 ) λIe 2←e (rE ∖I2 ) cannot cancel
+                              2    1                 1    2
+
+
+We first rewrite Eqs. (22)-(23) as
+
+
+
+                                                     20
+ SciPost Physics                                                                                                                                           Submission
+
+
+
+
+                                                         ∖
+                                                                                                     X
+                                                                                                                     I
+                                     ȷe1 = ȷe I2 + λIe 2←e ȷe2 +                                              λe 2←i ȷi                                               (C.1)
+                                                         1                 1         2                                   1
+                                                                                                     i∈I
+                                                         ∖
+                                                                                                     X
+                                                             I1                                                      I
+                                     ȷe2 = ȷe                     + λIe 1←e ȷe1 +                             λe 1←i ȷi ,                                             (C.2)
+                                                         2             2   1                                             2
+                                                                                                     i∈I
+
+                                                                                                                                                   ∖        ∖
+                                                                                                                                                       I        I
+where in this Appendix, for short, we omit the arguments of functions, i.e. : ȷe2 1 = ȷe2 1 (rE ∖I1 ),
+ ∖           ∖
+     I           I          I            I                                                   I                   I
+ȷe1 2 = ȷe1 2 (rE ∖I2 ), λe 1←i = λe 1←i (rE ∖I1 ) , and λe 2←i = λe 2←i (rE ∖I2 ). Equivalently, one has:
+                            2            2                                                   1                       1
+
+                                                                                                                                     ∖                          !
+                                                                           I                                                             I         I2
+                                                                                                                                     ȷe1 2 +
+                                                                                                                                               P
+                                                 1
+                                                                                      
+   ȷ                                                                  −λe12←e2                                                                i∈I λe1 ←i ȷi
+ M e1 = b            with       M=               I                                                   and             b=               ∖
+                                                                                                                                        I          I                , (C.3)
+   ȷe2                               −λe21←e1                           1                                                            ȷe2 1 + i∈I λe 1←i ȷi
+                                                                                                                                            P
+                                                                                                                                                    2
+
+
+which we read as an equation for ȷe1 and ȷe2 . Provided M is invertible, we obtain the mutual
+multilinearity needed in the inductive step of Sec. 3.2 (as also directly shown in the text). We
+now show ad absurdum that M is always invertible.
+                                     I     I                                   I            I
+   Let us assume that det M = 1 − λe21←e1 λe12←e2 = 0. Then necessarily both λe21←e1 and λe12←e2
+                                         I                                 I
+do not cancel and we have λe12←e2 = 1/λe21←e1 . Using this in Eq. (C.1) and multiplying by
+ I
+λe21←e1 we arrive at
+                                                             ∖
+                                                                                                         X
+                                                                                                                                     I
+                            − ȷe2 = λIe 1←e ȷe I2 − λIe 1←e ȷe1 +                                                λIe 1←e λe 2←i ȷi .                                  (C.4)
+                                             2       1       1                 2         1                                   2   1    1
+                                                                                                         i∈I
+
+Adding Eq. (C.2), this yields
+                                 ∖                                ∖
+                                                                               X
+                                                                                              I                I
+                        0 = ȷe I1 + λIe 1←e ȷe I2 +                                          λe 1←i + λIe 1←e λe 2←i ȷi ,                                             (C.5)
+                                                                                                                    
+                                 2               2           1    1                              2                       2       1    1
+                                                                                   i∈I
+
+which is a linear-affine interdependence of the admissible currents ȷ I with coefficients in rE ∖I
+(since (E ∖ I1 ) ∪ (E ∖ I2 ) = E ∖ I ). From the independence lemma of App. B, we thus have
+                                                                               ∖                              ∖
+                                                                           ȷe I1 + λIe 1←e ȷe I2 = 0                                                                  (C.6)
+                                                                               2                 2       1       1
+                                                                      I                                   I
+                                     ∀i ∈ I ,                     λe 1←i + λIe 1←e λe 2←i = 0 .                                                                       (C.7)
+                                                                       2                     2       1       1
+
+
+We now come back to the matrix equation (C.3). By hypothesis, M is singular; hence, Eq. (C.3)
+                                                                                   I
+has solutions provided b ∈ Im M. Since Im M = (Ker M⊤ )⊥ and Ker M⊤ = Span (λe21←e1 , 1)⊤
+                                                         I
+this condition is equivalent to b · (λe21←e1 , 1) = 0, but this is precisely guaranteed by Eqs. (C.6)-
+                                                                           I
+(C.7). Now, because Ker M = Span (1, λe21←e1 )⊤ , this means that Eq. (C.3) has a family of
+                                                                                     I
+solutions of the form ( ȷe1 , ȷe2 )⊤ = M⊕ b + γ (1, λe21←e1 )⊤ for any real number γ, where M⊕ is the
+Moore–Penrose pseudo-inverse of M⊕ . This is absurd because then we have several distinct
+linear-affine decompositions of ȷe1 on the admissible currents ȷ I with coefficients depending
+on rE ∖I , which is excluded by the independence lemma. □
+
+
+
+D        A fluctuation-dissipation relation
+Along each directed edge i, we define the time-integrated current Ji of a trajectory of duration t
+as the number of times transition +i occurs minus the number of times transition −i occurs.
+This quantity is time-additive and, upon a transition e ∈ E , evolves as
+
+                                                         Ji 7→ Ji + δe,+i − δe,−i .                                                                                  (D.1)
+
+                                                                                    21
+ SciPost Physics                                                                          Submission
+
+
+
+Its average and second cumulant are related to the stationary mean and covariance of the
+current as
+                                    1                        1
+                           ȷi = lim 〈Ji 〉 ,      ci1 i2 = lim 〈Ji1 Ji2 〉c .                  (D.2)
+                               t→∞ t                     t→∞ t
+
+     We define similarly the entropy production Σ of a trajectory of duration t as the logarithm
+of the ratio between the probability of this trajectory and the probability of its time reverse. It
+is a time-additive observable that increases at every jump: if transition e ∈ E occurs, one has
+                                                           r+e
+                                           Σ 7→ Σ + log        .                                  (D.3)
+                                                           r−e
+
+From the definitions and from the parametrization Eqs. (9)-(10) of the rates (see App. A), it
+is related to the currents Ji ’s by    X
+                                    Σ=     aα Jα + b.t.                                (D.4)
+                                                 α
+
+where the sum runs over the chords {α} and the boundary term b.t. depends only on the initial
+and final configurations of the trajectory. We recall that aα is the cycle affinity associated to
+chord α. We also see from the definition of Σ, that for any observable O depending on the
+trajectory, we have
+                              〈O(traj)〉 = O(trajR ) e−Σ(traj)+b.t. ,                        (D.5)
+where trajR denotes the time reversed of trajectory traj. For instance Ji (trajR ) = −Ji (traj).
+   The cumulant generating function of the currents, defined as
+
+                                                     1 P se Je
+                                       ψ(s ) = lim     e e∈E                                      (D.6)
+                                                 t→∞ t
+
+is such that ȷe = ∂se ψ| s =0 and ce1 e2 = ∂se ∂se ψ| s=0 . From Eqs. (D.4)-(D.5), it satisfies
+                                             1    2
+
+
+                       ψ(s cochord , s chord , a) = ψ(−s cochord , −a − s chord , a) ,            (D.7)
+
+where we split the full vector s into its chord contribution s chord = (sα ) and its cochord one,
+and a = (aα ) represent the affinity vector of the chords. Eq. (D.7) constitutes a fluctuation
+theorem that (slightly) generalizes the one derived in Ref. [51]. Differentiating it w.r.t. se and
+aα , and then sending s and a to zero, we arrive at
+
+                                ∂ 2 ψ(s , a)    1 ∂ 2 ψ(s , a)
+                                              =                .                                  (D.8)
+                                 ∂ se ∂ aα s=0 2 ∂ se ∂ sα s=0
+                                              a=0                      a=0
+
+From Eq. (D.2), this implies that, at equilibrium (a = 0, denoted by a superscript ‘eq’), the
+response of any stationary current ȷe to a change in the affinity aα of a chord is proportional
+to a current covariance:
+                                        ∂ ȷe eq 1 eq
+                                               = ceα .                                   (D.9)
+                                        ∂ aα     2
+This constitutes a form of fluctuation-dissipation relation at equilibrium. Because input cur-
+rents can be taken as a subset of chords, this proves Eq. (56) of the main text.
+
+
+
+References
+ [1] H. B. G. Casimir, On onsager’s principle of microscopic reversibility, Reviews of Modern
+     Physics 17, 343 (1945), doi:10.1103/RevModPhys.17.343.
+
+
+                                                      22
+ SciPost Physics                                                                Submission
+
+
+
+ [2] H. B. Callen and T. A. Welton, Irreversibility and Generalized Noise, Physical Review 83,
+     34 (1951), doi:10.1103/PhysRev.83.34.
+
+ [3] R. Kubo, Statistical-Mechanical Theory of Irreversible Processes. I. General Theory and
+     Simple Applications to Magnetic and Conduction Problems, Journal of the Physical So-
+     ciety of Japan 12, 570 (1957), doi:10.1143/JPSJ.12.570.
+
+ [4] U. M. B. Marconi, A. Puglisi, L. Rondoni and A. Vulpiani, Fluctuation–dissipation:
+     response theory in statistical physics,   Physics reports 461(4-6), 111 (2008),
+     doi:10.1016/j.physrep.2008.02.002.
+
+ [5] J. Kurchan, Fluctuation theorem for stochastic dynamics, Journal of Physics A: Mathe-
+     matical and General 31(16), 3719 (1998), doi:10.1088/0305-4470/31/16/003.
+
+ [6] J. L. Lebowitz and H. Spohn, A gallavotti–cohen-type symmetry in the large deviation
+     functional for stochastic dynamics, Journal of Statistical Physics 95, 333 (1999),
+     doi:10.1023/A:1004589714161.
+
+ [7] D. Andrieux and P. Gaspard, Fluctuation theorem for currents and schnakenberg network
+     theory, Journal of statistical physics 127, 107 (2007), doi:10.1007/s10955-006-9233-5.
+
+ [8] M. Esposito and C. Van den Broeck, Three detailed fluctuation theorems, Physical Review
+     Letters 104, 090601 (2010), doi:10.1103/PhysRevLett.104.090601.
+
+ [9] U. Seifert,        Entropy production along a stochastic trajectory and an
+     integral fluctuation theorem,    Physical Review Letters 95, 040602 (2005),
+     doi:10.1103/PhysRevLett.95.040602.
+
+[10] A. C. Barato and U. Seifert,           Thermodynamic uncertainty relation for
+     biomolecular processes,       Physical Review Letters 114, 158101 (2015),
+     doi:10.1103/PhysRevLett.114.158101.
+
+[11] T. R. Gingrich, J. M. Horowitz, N. Perunov and J. L. England, Dissipation bounds
+     all steady-state current fluctuations, Physical Review Letters 116, 120601 (2016),
+     doi:10.1103/PhysRevLett.116.120601.
+
+[12] G. S. Agarwal, Fluctuation-dissipation theorems for systems in non-thermal equilibrium
+     and applications, Zeitschrift für Physik A Hadrons and nuclei 252, 25 (1972),
+     doi:10.1007/BF01391621.
+
+[13] L. F. Cugliandolo, D. S. Dean and J. Kurchan, Fluctuation-Dissipation Theorems and
+     Entropy Production in Relaxational Systems, Physical Review Letters 79, 2168 (1997),
+     doi:10.1103/PhysRevLett.79.2168.
+
+[14] J. Prost, J.-F. Joanny and J. M. R. Parrondo, Generalized fluctuation-dissipation
+     theorem for steady-state systems, Physical Review Letters 103, 090601 (2009),
+     doi:10.1103/PhysRevLett.103.090601.
+
+[15] U. Seifert and T. Speck, Fluctuation-dissipation theorem in nonequilibrium steady states,
+     Europhysics Letters 89(1), 10007 (2010), doi:10.1209/0295-5075/89/10007.
+
+[16] B. Altaner, M. Polettini and M. Esposito,      Fluctuation-dissipation relations
+     far from equilibrium,      Physical Review Letters 117(18), 180601 (2016),
+     doi:10.1103/PhysRevLett.117.180601.
+
+
+
+                                             23
+ SciPost Physics                                                                Submission
+
+
+
+[17] J. A. Owen, T. R. Gingrich and J. M. Horowitz, Universal Thermodynamic Bounds
+     on Nonequilibrium Response with Biochemical Applications, Physical Review X 10(1),
+     011066 (2020), doi:10.1103/PhysRevX.10.011066.
+
+[18] A. Dechant and S.-i. Sasa,   Fluctuation–response inequality out of equilibrium,
+     Proceedings of the National Academy of Sciences 117, 6430 (2020),
+     doi:10.1073/pnas.1918386117.
+
+[19] G. Falasco, M. Esposito and J.-C. Delvenne, Beyond thermodynamic uncertainty
+     relations: Nonlinear response, error-dissipation trade-offs, and speed limits, Journal
+     of Physics A: Mathematical and Theoretical 55, 124002 (2022), doi:10.1088/1751-
+     8121/ac52e2.
+
+[20] G. Fernandes Martins and J. M. Horowitz, Topologically constrained fluctuations and
+     thermodynamics regulate nonequilibrium response, Physical Review E 108, 044113
+     (2023), doi:10.1103/PhysRevE.108.044113.
+
+[21] T. Aslyamov and M. Esposito,                 General Theory of Static Response for
+     Markov Jump Processes,       Physical        Review Letters 133, 107103 (2024),
+     doi:10.1103/PhysRevLett.133.107103.
+
+[22] T. Aslyamov and M. Esposito, Nonequilibrium Response for Markov Jump Processes:
+     Exact Results and Tight Bounds,   Physical Review Letters 132, 037101 (2024),
+     doi:10.1103/PhysRevLett.132.037101.
+
+[23] K. Ptaszyński, T. Aslyamov and M. Esposito,          Dissipation Bounds Precision of
+     Current Response to Kinetic Perturbations, Physical Review Letters 133, 227101 (2024),
+     doi:10.1103/PhysRevLett.133.227101.
+
+[24] J. Zheng and Z. Lu, Universal Non-equilibrium Response Theory Beyond Steady States,
+     arXiv:2403.10952 (2024), doi:10.48550/arXiv.2403.10952.
+
+[25] K. Liu and J. Gu,    Dynamical activity universally bounds precision of response,
+     arXiv:2410.20800 (2024), doi:10.48550/arXiv.2410.20800.
+
+[26] H.-M. Chun and J. M. Horowitz, Trade-offs between number fluctuations and response
+     in nonequilibrium chemical reaction networks, The Journal of Chemical Physics 158,
+     174115 (2023), doi:10.1063/5.0148662.
+
+[27] E. Kwon, H.-M. Chun, H. Park and J. S. Lee, Fluctuation-response inequalities for kinetic
+     and entropic perturbations, arXiv:2411.18108 (2024), doi:10.48550/arXiv.2411.18108.
+
+[28] R. Bao and S. Liang, Nonequilibrium Response Theory: From Precision Limits to
+     Strong Perturbation, arXiv:2412.19602 (2024), doi:10.48550/arXiv.2412.19602.
+
+[29] T. V. Vu, Fundamental bounds on precision and response for quantum trajectory
+     observables, arXiv:2411.19546 (2024), doi:10.48550/arXiv.2411.19546.
+
+[30] T.   Aslyamov,    K.   Ptaszyński  and     M.     Esposito,         Nonequilibrium
+     Fluctuation-Response Relations: From Identities to Bounds, arXiv:2410.17140 (2024),
+     doi:10.48550/arXiv.2410.17140.
+
+[31] K. Ptaszynski,     T. Aslyamov and M. Esposito,                  Nonequilibrium
+     Fluctuation-Response Relations for State Observables, arXiv:2412.10233 (2024),
+     doi:10.48550/arXiv.2412.10233.
+
+
+                                             24
+ SciPost Physics                                                                 Submission
+
+
+
+[32] J. Zheng and Z. Lu,      Spatial Correlation Unifies Nonequilibrium Response Theory
+     for    Arbitrary Markov Jump Processes,                arXiv:2501.01050     (2025),
+     doi:10.48550/arXiv.2501.01050.
+
+[33] P. E. Harunari, S. Dal Cengio, V. Lecomte and M. Polettini, Mutual Linearity of
+     Nonequilibrium Network Currents, Physical Review Letters 133(4), 047401 (2024),
+     doi:10.1103/PhysRevLett.133.047401.
+
+[34] M. Polettini, P. E. Harunari, S. D. Cengio and V. Lecomte, Coplanarity of rooted
+     spanning-tree vectors, arXiv:2407.16093 (2024), doi:10.48550/arXiv.2407.16093.
+
+[35] T. L. Hill, Studies in irreversible thermodynamics iv. diagrammatic representation of
+     steady state fluxes for unimolecular systems, Journal of Theoretical Biology 10(3), 442
+     (1966), doi:https://doi.org/10.1016/0022-5193(66)90137-8.
+
+[36] J. Schnakenberg,   Network theory of microscopic and macroscopic behavior
+     of master equation systems,    Reviews of Modern Physics 48, 571 (1976),
+     doi:10.1103/RevModPhys.48.571.
+
+[37] E. C. Kirby, R. B. Mallion, P. Pollak and P. J. Skrzyński,       What kirchhoff
+     actually did concerning spanning trees in electrical networks and its relationship
+     to modern graph-theoretical work,    Croatica Chemica Acta 89(4), 403 (2016),
+     doi:10.5562/cca2995.
+
+[38] S. Dal Cengio, V. Lecomte and M. Polettini, Geometry of Nonequilibrium Reaction
+     Networks, Physical Review X 13(2), 021040 (2023), doi:10.1103/PhysRevX.13.021040.
+
+[39] M. Polettini and M. Esposito, Irreversible thermodynamics of open chemical networks. i.
+     emergent cycles and broken conservation laws, The Journal of chemical physics 141(2)
+     (2014), doi:10.1063/1.4886396.
+
+[40] P. Pietzonka, A. C. Barato and U. Seifert, Universal bounds on current fluctuations, Phys-
+     ical Review E 93, 052145 (2016), doi:10.1103/PhysRevE.93.052145.
+
+[41] M. Polettini and M. Esposito, Effective thermodynamics for a marginal observer, Physical
+     Review Letters 119, 240601 (2017), doi:10.1103/PhysRevLett.119.240601.
+
+[42] N. Freitas, J.-C. Delvenne and M. Esposito, Stochastic thermodynamics of nonlinear
+     electronic circuits: A realistic framework for computing around kt, Physical Review X
+     11, 031064 (2021), doi:10.1103/PhysRevX.11.031064.
+
+[43] E. Ilker, O. m. c. Güngör, B. Kuznets-Speck, J. Chiel, S. Deffner and M. Hinczewski,
+     Shortcuts in stochastic systems and control of biophysical processes, Physical Review
+     X 12, 021048 (2022), doi:10.1103/PhysRevX.12.021048.
+
+[44] N. Ohga, S. Ito and A. Kolchinsky,             Thermodynamic bound on the
+     asymmetry of cross-correlations,  Physical Review Letters 131, 077101 (2023),
+     doi:10.1103/PhysRevLett.131.077101.
+
+[45] F. Avanzini, M. Bilancioni, V. Cavina, S. D. Cengio, M. Esposito, G. Falasco,
+     D. Forastiere, N. Freitas, A. Garilli, P. E. Harunari, V. Lecomte, A. Lazarescu et al.,
+     Methods and conversations in (post)modern thermodynamics, SciPost Physics Lecture
+     Notes p. 80 (2024), doi:10.21468/SciPostPhysLectNotes.80.
+
+[46] F. Khodabandehlou, C. Maes and K. Netočnỳ, Affine relationships between steady
+     currents, arXiv:2412.05019 (2024), doi:10.48550/arXiv.2412.05019.
+
+                                              25
+ SciPost Physics                                                                Submission
+
+
+
+[47] C. Monthus,       Markov generators as non-Hermitian supersymmetric quantum
+     Hamiltonians: Spectral properties via bi-orthogonal basis and singular value
+     decompositions, Journal of Statistical Mechanics: Theory and Experiment 2024, 083207
+     (2024), doi:10.1088/1742-5468/ad613a.
+
+[48] P. Chebotarev and R. Agaev, Forest matrices around the laplacian matrix, Linear Algebra
+     and its Applications 356(1), 253 (2002), doi:10.1016/S0024-3795(02)00388-9.
+
+[49] F. Khodabandehlou, C. Maes and K. Netočnỳ, Trees and forests for nonequilibrium
+     purposes: an introduction to graphical representations, Journal of Statistical Physics
+     189(3), 41 (2022), doi:10.1007/s10955-022-03003-4.
+
+[50] M. Polettini and M. Esposito, Effective fluctuation and response theory, Journal of
+     Statistical Physics 176, 94 (2019), doi:10.1007/s10955-019-02291-7.
+
+[51] D. Andrieux and P. Gaspard, Fluctuation theorem and Onsager reciprocity relations, The
+     Journal of Chemical Physics 121(13), 6167 (2004), doi:10.1063/1.1782391.
+
+[52] J. W. Rocks, H. Ronellenfitsch, A. J. Liu, S. R. Nagel and E. Katifori, Limits of
+     multifunctionality in tunable networks, Proceedings of the National Academy of Sci-
+     ences 116(7), 2506 (2019), doi:10.1073/pnas.1806790116.
+
+[53] M. Stern and A. Murugan, Learning without neurons in physical systems, Annual Review
+     of Condensed Matter Physics 14(Volume 14, 2023), 417 (2023), doi:10.1146/annurev-
+     conmatphys-040821-113439.
+
+[54] M. Guzman, F. Martins, M. Stern and A. J. Liu,           Microscopic imprints
+     of learned solutions in adaptive resistor networks, arXiv:2412.19356 (2024),
+     doi:10.48550/arXiv.2412.19356.
+
+[55] A. Blokhuis, D. Lacoste and P. Nghe, Universal motifs and the diversity of autocatalytic
+     systems, Proceedings of the National Academy of Sciences 117(41), 25230 (2020),
+     doi:10.1073/pnas.2013527117.
+
+
+
+
+                                             26
+
