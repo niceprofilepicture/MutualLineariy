@@ -1,0 +1,13 @@
+/build/
+__pycache__/
+/research/*.pdf
+/research/*.txt
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*-inc.bib
