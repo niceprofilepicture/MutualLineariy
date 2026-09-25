@@ -1,13 +1,41 @@
-/build/
+# Generated builds and previews, including the former paper/ layout.
+build/
+
+# Downloaded reference papers and extracted text; keep source_notes.md.
+**/research/*.pdf
+**/research/*.txt
+
+# Python caches.
 __pycache__/
-/research/*.pdf
-/research/*.txt
+*.py[cod]
+
+# LaTeX and bibliography intermediates.
 *.aux
 *.bbl
 *.blg
+*.bcf
 *.fdb_latexmk
 *.fls
 *.log
 *.out
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.run.xml
+*.synctex
 *.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+*Notes.bib
 *-inc.bib
+
+# macOS metadata and editor backups.
+.DS_Store
+._*
+*~
+*.swp
+*.swo
+*.bak
