@@ -107,23 +107,44 @@
 
 
 \begin{abstract}
-We show that mutual linearity of stationary probabilities and currents in Markov jump
-processes follows directly from classical response theory.
-Using the exact finite-response identity expressed through the Drazin
-inverse, we show that changing the rates of one edge changes all
-stationary probabilities by the same scalar factor multiplied by fixed
-coefficients. Eliminating this factor gives the known mutual-linearity
-relations, valid arbitrarily far from equilibrium. We generalize this property beyond Markov jump processes to linear systems.
+This short note explains how known mutual-linearity relations for Markov
+jump processes follow from classical response theory. When the rates of
+one edge change, an exact finite-response identity shows that the changes
+in all stationary probabilities share a common factor. Eliminating this
+factor gives the relations between probabilities, observables, and
+currents, even far from equilibrium. We also explain how the same
+argument applies when one coefficient of a linear system changes and
+recovers the known relations in Laplace space.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
 \label{sec:introduction}
 
-Stationary probabilities and currents generally depend nonlinearly on transition rates. Nevertheless, varying the rates of one edge produces affine relations between these quantities, known as mutual linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}. We aim to give a short derivation of mutual linearity from the classical finite-response identity~\cite{Schweitzer1968,Meyer1980}.
-Using the Drazin inverse, this identity shows that all probability
-changes share one scalar factor. Eliminating it, we find the known
-relations. In addition, we formulate an extension of mutual linearity beyond Markov processes to linear systems.
+Stationary probabilities and currents generally depend nonlinearly on
+transition rates. Nevertheless, varying the rates of one edge produces
+straight-line relations between these quantities, known as mutual
+linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
+The purpose of this short explanatory note is to clarify the common
+origin of the basic probability and current relations using the
+classical finite-response
+identity~\cite{Schweitzer1968,Meyer1980}. Written with the Drazin inverse,
+this identity shows that all probability changes share one common
+factor. Eliminating it gives the relations between probabilities,
+observables, and currents. This gives a single short argument for both
+the stationary and the known Laplace-space
+relations~\cite{Harunari2024,ZhengLu2026,VoitsSchwarz2026}, and explains
+when the same property holds in other linear systems.
+
+We do not claim to cover all the results of
+Refs.~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
+Their more detailed approaches also give results outside the scope of
+this note. These include explicit network formulas for the coefficients
+relating currents~\cite{Harunari2024}, expressions for these coefficients
+in terms of mean first-passage times~\cite{Khodabandehlou2025}, relations
+for several input currents~\cite{DalCengio2025}, bounds on stationary
+probabilities and observables~\cite{BebonSpeck2026}, and relations between
+Laplace transforms of first-hitting-time distributions~\cite{VoitsSchwarz2026}.
 
 \section{Exact stationary response}
 \label{sec:response}
@@ -195,7 +216,6 @@ dynamical responses to impulsive rate perturbations at time $t$, with
 $\pi_j/\pi_i$ replaced by $p_j(t)/p_i(t)$.
 Thus, this response ratio can be obtained without invoking mutual linearity under finite rate changes.
 
-\newpage
 \subsection{Currents}
 
 Now we turn to mutual linearity between the steady-state currents. The stationary current from $l$ to $k$ is
