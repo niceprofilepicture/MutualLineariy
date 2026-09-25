@@ -107,120 +107,105 @@
 
 
 \begin{abstract}
-Mutual linearity of stationary probabilities and currents in Markov jump
-processes follows directly from classical Markov response theory.
+We show that mutual linearity of stationary probabilities and currents in Markov jump
+processes follows directly from classical response theory.
 Using the exact finite-response identity expressed through the Drazin
 inverse, we show that changing the rates of one edge changes all
 stationary probabilities by the same scalar factor multiplied by fixed
 coefficients. Eliminating this factor gives the known mutual-linearity
-relations, valid arbitrarily far from equilibrium.
+relations, valid arbitrarily far from equilibrium. We generalize this property beyond Markov jump process to linear systems. 
 \end{abstract}
 \maketitle
 
 \section{Introduction}
 \label{sec:introduction}
 
-Stationary probabilities and currents generally depend nonlinearly on
-transition rates. Nevertheless, varying the rates of one edge produces
-affine relations between these quantities, known as mutual
-linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
-Our goal is to give a short common derivation from the classical
-finite-response identity of Markov-chain theory~\cite{Schweitzer1968,Meyer1980}.
-Written with the Drazin inverse, this identity shows that all probability
-changes share one scalar factor. Eliminating it yields the known
-relations and makes their extension beyond Markov processes transparent.
+Stationary probabilities and currents generally depend nonlinearly on transition rates. Nevertheless, varying the rates of one edge produces affine relations between these quantities, known as mutual linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}. We aim to give a short derivation of mutual linearity from the classical finite-response identity~\cite{Schweitzer1968,Meyer1980}.
+Using the Drazin inverse, this identity shows that all probability
+changes share one scalar factor. Eliminating it, we find the known
+relations. In addition we formulate mutual linearity extension beyond Markov processes to linear systems.
 
 \section{Exact stationary response}
 \label{sec:response}
 
-The finite-response identity below dates back to the
-1960s~\cite{Schweitzer1968}. We simply recast it here for Markov jump
-processes.
+The finite-response identity shown below dates back to the
+1960s~\cite{Schweitzer1968} and was originally formulated for Markov chains. Here we simply rewrite it for the continuum time Markov jump processes over the finite state space.
 
-We consider a finite irreducible Markov jump process,
-$\partial_t\bm p=W\bm p$, where $W_{ij}$ is the transition rate from
-$j$ to $i$, and $W_{jj}=-\sum_{i\ne j}W_{ij}$.
-The stationary distribution satisfies $W\bm\pi=0$ and
-$\bm1^\intercal\bm\pi=1$.
-For a second irreducible generator $W'=W+\Delta W$, the classical
-fundamental-matrix identity takes the form
+We consider a finite irreducible Markov jump process, $\partial_t\bm p=W\bm p$, where $W_{ij}$ is the transition rate from $j$ to $i$, and $W_{jj}=-\sum_{i\ne j}W_{ij}$.
+The stationary distribution satisfies $W\bm\pi=0$ and $\bm1^\intercal\bm\pi=1$.
+Introducing a second generator $W'=W+\Delta W$, the classical fundamental-matrix identity takes the form
 \begin{align}
     \Delta\bm\pi\equiv\bm\pi'-\bm\pi=-G\Delta W\bm\pi'\,,
     \label{eq:finite}
 \end{align}
 where $G=W^D$ is the Drazin inverse~\cite{Meyer1975,crook2018drazin,aslyamov2025excess}.
-It satisfies $GW=WG=I-\bm\pi\bm1^\intercal$,
-$G\bm\pi=0$, and $\bm1^\intercal G=0$.
-Indeed, subtracting the two stationary equations gives
-$W\Delta\bm\pi=-\Delta W\bm\pi'$.
-Multiplication by $G$ and normalization yield \cref{eq:finite},
-without assuming that $\Delta W$ is small.
+It satisfies $GW=WG=I-\bm\pi\bm1^\intercal$, $G\bm\pi=0$, and $\bm1^\intercal G=0$.
+Indeed, subtracting the two stationary equations gives $W\Delta\bm\pi=-\Delta W\bm\pi'$.
+Multiplication by $G$ and normalization provides \cref{eq:finite}, without assuming that $\Delta W$ is small. 
 
 \section{Mutual linearity}
 \label{sec:mutual-linearity}
 
-\subsection{Probabilities and observables}
+\subsection{State observables}
 
-We change $W_{ij}$ and $W_{ji}$,
-keeping all other off-diagonal rates fixed and adjusting the diagonal
-entries to preserve probability conservation.
-Only components $i$ and $j$ of $\Delta W\bm\pi'$ are nonzero,
-and they have opposite signs. Equation~\eqref{eq:finite} therefore gives
+We start with derivation of mutual linearity for probabilities and state observables. 
+For the second matrix $W'$, we change $W_{ij}$ and $W_{ji}$,
+keeping all other non-diagonal rates fixed and adjusting the diagonal elements to preserve probability conservation.
+Then, only components $i$ and $j$ of the vector $\Delta W\bm\pi'$ are nonzero, and they have opposite signs. Equation~\eqref{eq:finite} therefore gives
 \begin{align}
     \Delta\pi_n
     &=(G_{nj}-G_{ni})
       (\Delta W_{ij}\pi_j'-\Delta W_{ji}\pi_i')
     \nonumber\\
-    &\equiv h_n\alpha.
+    &\equiv h_n\alpha\,,
     \label{eq:edge-response}
 \end{align}
-Here $h_n\equiv G_{nj}-G_{ni}$ is calculated from the rates before the change,
-including $W_{ij}$ and $W_{ji}$.
-We keep this initial $W$ fixed and vary $W_{ij}'$ and $W_{ji}'$;
-all dependence on these new rates enters
+where $h_n\equiv G_{nj}-G_{ni}$ is calculated from the rates before the change,
+and do not depend on $\Delta W_{ij}$ and $\Delta W_{ji}$.
+All dependence on these rate changes enters the second factor
 $\alpha \equiv \Delta W_{ij}\pi_j'-\Delta W_{ji}\pi_i'$.
 Repeating \cref{eq:edge-response} for state $m$ and eliminating $\alpha$ gives
 \begin{align}
     \Delta\pi_n=\frac{h_n}{h_m}\Delta\pi_m\,,
-    \qquad h_m\ne0\,.
+    \qquad h_m\ne0\,,
     \label{eq:probabilities}
 \end{align}
-Thus $(\pi_m',\pi_n')$ lies on one straight line for every choice of
-the new edge rates~\cite{BebonSpeck2026}.
-The coefficients $h_n$ depend on the initial values of $W_{ij}$ and $W_{ji}$,
-but their ratios, and hence this line, do not.
+where $(\pi_m',\pi_n')$ lies on one straight line for every choice of
+the new edge rates. It was recently discovered in Ref.~\cite{BebonSpeck2026}.
 
-For state observables $O=\sum_n O_n\pi_n$ and
-$Q=\sum_n Q_n\pi_n$ with fixed weights, the same argument gives
+More generally, for state observables $O=\sum_n O_n\pi_n$ and
+$Q=\sum_n Q_n\pi_n$ with fixed weights, the same argument gives the following.
 \begin{align}
     \Delta O=\frac{\sum_n O_n h_n}{\sum_n Q_n h_n}\Delta Q\,,
     \label{eq:observables}
 \end{align}
-provided the denominator is nonzero.
-Taking infinitesimal changes in \cref{eq:edge-response} further yields
+provided that the denominator is nonzero.
+
+Let us now consider \cref{eq:edge-response} for linear responses:
 \begin{align}
     \partial_{W_{ij}}\pi_n=h_n\pi_j\,,\qquad
     \partial_{W_{ji}}\pi_n=-h_n\pi_i\,,
     \label{eq:derivatives}
 \end{align}
 so that $-\partial_{W_{ij}}\pi_n/\partial_{W_{ji}}\pi_n=\pi_j/\pi_i$
-whenever $h_n\ne0$, recovering the response ratio of
+whenever $h_n\ne0$. It recovers the response ratio of
 Ref.~\cite{BebonSpeck2026}.
-Our dynamical fluctuation-response theory gives the same ratio for
-responses to impulsive rate perturbations at time $t$, with
-$\pi_j/\pi_i$ replaced by $p_j(t)/p_i(t)$~\cite{AslyamovEsposito2026}.
-This relation does not require mutual linearity under finite rate changes.
+Interestingly, that our dynamical fluctuation-response theory~\cite{AslyamovEsposito2026} gives the same ratio for
+dynamical responses to impulsive rate perturbations at time $t$, with
+$\pi_j/\pi_i$ replaced by $p_j(t)/p_i(t)$.
+Thus, \cref{eq:derivatives} does not require mutual linearity under finite rate changes.
 
 \subsection{Currents}
 
-The stationary current from $l$ to $k$ is
-$J_{kl}=W_{kl}\pi_l-W_{lk}\pi_k$.
+Now we turn to mutual lienarity between the steady-state currents. The stationary current from $l$ to $k$ is
+$J_{kl}\equiv W_{kl}\pi_l-W_{lk}\pi_k$.
 For an edge whose transition rates $W_{kl}$ and $W_{lk}$ are kept fixed,
 \cref{eq:edge-response} gives
 \begin{align}
-    \Delta J_{kl}=(W_{kl}h_l-W_{lk}h_k)\alpha\,.
+    \Delta J_{kl}=(W_{kl}h_l-W_{lk}h_k)\alpha\,,
     \label{eq:output-current}
 \end{align}
+where changes induced by a new steady state only. 
 On the perturbed edge, the rates themselves also change:
 \begin{align}
     \Delta J_{ij}
@@ -240,15 +225,13 @@ $(k,l)$ gives
 \end{align}
 which is the mutual linearity of stationary
 currents~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025}.
-Both current changes contain the same $\alpha$, so their ratio is
-independent of the new edge rates, provided the denominator is nonzero
-and the perturbed process remains irreducible.
+Both current changes contain the same $\alpha$, so their ratio is independent of the new edge rates.
 
-The connection with the first-passage formulation of
-Ref.~\cite{Khodabandehlou2025} follows from
-$h_n=\pi_n(\tau_{j\to n}-\tau_{i\to n})$, where
-$\tau_{j\to n}$ is the mean first-passage time from $j$ to $n$
-and $\tau_{n\to n}=0$~\cite{Meyer1975}.
+% The connection with the first-passage formulation of
+% Ref.~\cite{Khodabandehlou2025} follows from
+% $h_n=\pi_n(\tau_{j\to n}-\tau_{i\to n})$, where
+% $\tau_{j\to n}$ is the mean first-passage time from $j$ to $n$
+% and $\tau_{n\to n}=0$~\cite{Meyer1975}.
 
 \section{Discussion and conclusions}
 \label{sec:discussion}
@@ -271,31 +254,27 @@ proportions, with only its scalar amplitude $\alpha$ changing.
 Then $\Delta\bm x=-A^{-1}\bm u\alpha$, so eliminating $\alpha$
 again gives mutual linearity.
 
-The frequency-domain results follow by setting $A=sI-W$.
-For time-independent rates, the Laplace-transformed master equation is
+The frequency-domain extension could follow from \cref{eq:linear-system} using $A=sI-W$. For time-independent rates, the Laplace-transformed master equation is
 $(sI-W)\widetilde{\bm p}(s)=\bm p(0)$.
-Keeping the same initial distribution in both systems, define
-$R(s)=(sI-W)^{-1}$ for $\operatorname{Re}s>0$ and
-$h_n(s)=R_{ni}(s)-R_{nj}(s)$.
+We keep the same initial distribution in both systems and define the resolvent matrix
+$R(s)=(sI-W)^{-1}$ for $\operatorname{Re}s>0$.
 Changing the rates of edge $(i,j)$ and eliminating the common factor
-between states $n$ and $m$ gives
+between states $n$ and $m$ results in 
 \begin{align}
     \Delta\widetilde p_n
     &=h_n(s)(\Delta W_{ij}\widetilde p_j'
               -\Delta W_{ji}\widetilde p_i')\,,\nonumber\\
     \Delta\widetilde p_n
     &=\frac{h_n(s)}{h_m(s)}\Delta\widetilde p_m\,,
-    \qquad h_m(s)\ne0\,.
+    \qquad h_m(s)\ne0\,,
     \label{eq:laplace}
 \end{align}
-All transformed probabilities are evaluated at the same $s$.
-This recovers the Laplace-domain probability
-relations~\cite{ZhengLu2026,VoitsSchwarz2026}.
+where $h_n(s)=R_{ni}(s)-R_{nj}(s)$ and where all probabilities are evaluated at the same $s$.
+This recovers the Laplace-domain probability relations~\cite{ZhengLu2026,VoitsSchwarz2026}.
 Repeating \cref{eq:output-current,eq:input-current,eq:currents} with
 $\widetilde{\bm p}(s)$ and $h_n(s)$ gives the corresponding current
 relations~\cite{Harunari2024}.
-The frequency-dependent slope corresponds to a convolution in time,
-rather than an affine relation at each instant.
+These relations hold for the Laplace transforms. At a fixed time, varying the edge rates need not produce a straight-line relation between two probabilities or two currents~\cite{VoitsSchwarz2026}.
 
 \bibliography{references}
 \end{document}
