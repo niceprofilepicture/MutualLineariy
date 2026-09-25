@@ -145,10 +145,10 @@ $\bm1^\intercal\bm\pi=1$.
 For a second irreducible generator $W'=W+\Delta W$, the classical
 fundamental-matrix identity takes the form
 \begin{align}
-    \Delta\bm\pi\equiv\bm\pi'-\bm\pi=-G\Delta W\bm\pi',
+    \Delta\bm\pi\equiv\bm\pi'-\bm\pi=-G\Delta W\bm\pi'\,,
     \label{eq:finite}
 \end{align}
-where $G=W^D$ is the Drazin inverse~\cite{Meyer1975}.
+where $G=W^D$ is the Drazin inverse~\cite{Meyer1975,crook2018drazin,aslyamov2025excess}.
 It satisfies $GW=WG=I-\bm\pi\bm1^\intercal$,
 $G\bm\pi=0$, and $\bm1^\intercal G=0$.
 Indeed, subtracting the two stationary equations gives
@@ -174,15 +174,15 @@ and they have opposite signs. Equation~\eqref{eq:finite} therefore gives
     &\equiv h_n\alpha.
     \label{eq:edge-response}
 \end{align}
-Here $h_n=G_{nj}-G_{ni}$ is calculated from the rates before the change,
+Here $h_n\equiv G_{nj}-G_{ni}$ is calculated from the rates before the change,
 including $W_{ij}$ and $W_{ji}$.
 We keep this initial $W$ fixed and vary $W_{ij}'$ and $W_{ji}'$;
 all dependence on these new rates enters
-$\alpha=\Delta W_{ij}\pi_j'-\Delta W_{ji}\pi_i'$.
+$\alpha \equiv \Delta W_{ij}\pi_j'-\Delta W_{ji}\pi_i'$.
 Repeating \cref{eq:edge-response} for state $m$ and eliminating $\alpha$ gives
 \begin{align}
-    \Delta\pi_n=\frac{h_n}{h_m}\Delta\pi_m,
-    \qquad h_m\ne0.
+    \Delta\pi_n=\frac{h_n}{h_m}\Delta\pi_m\,,
+    \qquad h_m\ne0\,.
     \label{eq:probabilities}
 \end{align}
 Thus $(\pi_m',\pi_n')$ lies on one straight line for every choice of
@@ -193,7 +193,7 @@ and hence this line, unchanged.
 For state observables $O=\sum_n O_n\pi_n$ and
 $Q=\sum_n Q_n\pi_n$ with fixed weights, the same argument gives
 \begin{align}
-    \Delta O=\frac{\sum_n O_n h_n}{\sum_n Q_n h_n}\Delta Q,
+    \Delta O=\frac{\sum_n O_n h_n}{\sum_n Q_n h_n}\Delta Q\,,
     \label{eq:observables}
 \end{align}
 provided the denominator is nonzero.
@@ -201,8 +201,8 @@ This also covers mean jump-counting rates on unchanged edges, since
 they are fixed linear combinations of the stationary probabilities.
 Taking infinitesimal changes in \cref{eq:edge-response} further yields
 \begin{align}
-    \partial_{W_{ij}}\pi_n=h_n\pi_j,\qquad
-    \partial_{W_{ji}}\pi_n=-h_n\pi_i,
+    \partial_{W_{ij}}\pi_n=h_n\pi_j\,,\qquad
+    \partial_{W_{ji}}\pi_n=-h_n\pi_i\,,
     \label{eq:derivatives}
 \end{align}
 so that $-\partial_{W_{ij}}\pi_n/\partial_{W_{ji}}\pi_n=\pi_j/\pi_i$
@@ -219,7 +219,7 @@ The stationary current from $l$ to $k$ is
 $J_{kl}=W_{kl}\pi_l-W_{lk}\pi_k$.
 For an unchanged edge, \cref{eq:edge-response} gives
 \begin{align}
-    \Delta J_{kl}=(W_{kl}h_l-W_{lk}h_k)\alpha.
+    \Delta J_{kl}=(W_{kl}h_l-W_{lk}h_k)\alpha\,.
     \label{eq:output-current}
 \end{align}
 On the perturbed edge, the rates themselves also change:
@@ -228,7 +228,7 @@ On the perturbed edge, the rates themselves also change:
     &=W_{ij}\Delta\pi_j-W_{ji}\Delta\pi_i
       +\Delta W_{ij}\pi_j'-\Delta W_{ji}\pi_i'
     \nonumber\\
-    &=(1+W_{ij}h_j-W_{ji}h_i)\alpha.
+    &=(1+W_{ij}h_j-W_{ji}h_i)\alpha\,.
     \label{eq:input-current}
 \end{align}
 Eliminating $\alpha$ between the currents on $(i,j)$ and another edge
@@ -236,7 +236,7 @@ $(k,l)$ gives
 \begin{align}
     \Delta J_{kl}
     =\frac{W_{kl}h_l-W_{lk}h_k}
-          {1+W_{ij}h_j-W_{ji}h_i}\Delta J_{ij},
+          {1+W_{ij}h_j-W_{ji}h_i}\Delta J_{ij}\,,
     \label{eq:currents}
 \end{align}
 which is the mutual linearity of stationary
@@ -259,9 +259,9 @@ system $A\bm x=\bm b$ with nonsingular $A$ and fixed $\bm b$.
 If only $A_{ij}$ changes and $A'$ is nonsingular, subtracting the
 equations and eliminating $\Delta A_{ij}x_j'$ between $n$ and $m$ gives
 \begin{align}
-    \Delta x_n&=-(A^{-1})_{ni}\Delta A_{ij}x_j',\nonumber\\
-    \Delta x_n&=\frac{(A^{-1})_{ni}}{(A^{-1})_{mi}}\Delta x_m,
-    \qquad (A^{-1})_{mi}\ne0.
+    \Delta x_n&=-(A^{-1})_{ni}\Delta A_{ij}x_j'\,,\nonumber\\
+    \Delta x_n&=\frac{(A^{-1})_{ni}}{(A^{-1})_{mi}}\Delta x_m\,,
+    \qquad (A^{-1})_{mi}\ne0\,.
     \label{eq:linear-system}
 \end{align}
 The same proportionality holds for fixed linear observables.
@@ -283,10 +283,10 @@ between states $n$ and $m$ gives
 \begin{align}
     \Delta\widetilde p_n
     &=h_n(s)(\Delta W_{ij}\widetilde p_j'
-              -\Delta W_{ji}\widetilde p_i'),\nonumber\\
+              -\Delta W_{ji}\widetilde p_i')\,,\nonumber\\
     \Delta\widetilde p_n
-    &=\frac{h_n(s)}{h_m(s)}\Delta\widetilde p_m,
-    \qquad h_m(s)\ne0.
+    &=\frac{h_n(s)}{h_m(s)}\Delta\widetilde p_m\,,
+    \qquad h_m(s)\ne0\,.
     \label{eq:laplace}
 \end{align}
 All transformed probabilities are evaluated at the same $s$.
