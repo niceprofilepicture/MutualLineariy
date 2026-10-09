@@ -55,20 +55,31 @@ The chemical-network addition (9 October 2026) cites
 [Harunari, Fiusa, and Polettini, arXiv:2610.11970v1](https://arxiv.org/html/2610.11970v1).
 Their zero-deficiency, bidirectionality, and single-linkage-class assumptions
 supply complex balance, `K psi = 0`, for positive stationary activities.
-Removing the controlled nonbridge reaction leaves an irreducible `K_0`.
-Multiplication of `K_0 psi = -(e_i - e_j) J` by its Drazin inverse gives
-`psi = S pi^0 + h J`, with `S = sum(psi)` and
-`h = -K_0^D (e_i - e_j)`. Eliminating the two amplitudes recovers their
-Eq. (5), using coefficients `C_ab = pi_a^0 h_b - pi_b^0 h_a` that depend
-only on uncontrolled rates. If all three minors vanish for a selected triple,
+The manuscript assumes complex balance directly and now follows the same
+finite-response derivation as for Markov jump processes. Applying `G = K^D`
+to `K Delta psi = -Delta K psi'` gives
+`Delta psi = (psi / S) Delta S + h alpha`, with `S = sum(psi)`,
+`h = -G (e_i - e_j)`, and `alpha = Delta r_+ psi_j' - Delta r_- psi_i'`.
+Thus `psi' = S' pi + h alpha`, where `pi = psi / S`.
+Eliminating the two amplitudes recovers the homogeneous relation in their
+Eq. (5), using coefficients `C_ab = pi_a h_b - pi_b h_a` evaluated in
+the reference system and independent of the rate changes. This formulation
+does not remove the controlled reaction and needs no nonbridge assumption.
+If all three minors vanish for a selected triple,
 its activities are mutually proportional; the displayed relation remains valid.
 The manuscript includes this central stationary relation, without adding
 activity-ratio bounds or stochastic claims. The fourth section is now
 "Further applications," with parallel subsections for Laplace-transformed
 dynamics and chemical reaction networks. The abstract and introduction reflect
-both applications. An independent in-memory check of the activity decomposition,
-the homogeneous relation, and scalar current formula covered 900 rate pairs
+both applications. For the earlier edge-removal formulation, an independent
+in-memory check of the activity decomposition, the homogeneous relation,
+and scalar current formula covered 900 rate pairs
 on 60 random networks, with maximum residual approximately `6.88e-15`.
+The finite-response formulation was checked on 400 rate changes in 40
+mass-action networks of the form `2 A_i <-> 2 A_j`, with fixed total species
+concentration, including 20 chains and 20 cycles. The activity-response,
+homogeneous-relation, and probability-limit checks had numerical errors
+below `5.22e-15`.
 
 The closing literature paragraph in "Exact stationary response" distinguishes
 the use of the Drazin inverse for response derivatives from its use for finite

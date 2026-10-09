@@ -107,10 +107,11 @@
 
 
 \begin{abstract}
-This short note explains how known mutual-linearity relations for Markov
-jump processes follow from classical response theory. When the rates of
-one edge change, an exact finite-response identity shows that the changes
-in all stationary probabilities share a common factor. Eliminating this
+We derive known mutual-linearity relations for Markov jump processes
+and chemical reaction networks within a common framework based on
+classical finite-response theory. In a Markov jump process, an exact finite-response
+identity shows that all stationary probability changes share a common
+factor when the rates of one edge change. Eliminating this
 factor gives the relations between probabilities, observables, and
 currents, even far from equilibrium. We also explain how the same
 argument applies when one coefficient of a linear system changes and
@@ -126,24 +127,21 @@ Stationary probabilities and currents generally depend nonlinearly on
 transition rates. Nevertheless, varying the rates of one edge produces
 straight-line relations between these quantities, known as mutual
 linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,Polettini2026Coplanarity,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
-The purpose of this short explanatory note is to clarify the common
-origin of the basic probability and current relations using the
-classical finite-response
-identity~\cite{Schweitzer1968,Meyer1980}. Written with the Drazin inverse,
-this identity shows that all probability changes share one common
-factor. Eliminating it gives the relations between probabilities,
-observables, and currents. This gives a single short argument for both
-the stationary and the known Laplace-space
-relations~\cite{Harunari2024,ZhengLu2026,VoitsSchwarz2026}, and explains
-when the same property holds in other linear systems. Applied to the
-complex-space Laplacian, the argument also recovers the homogeneous
+Our aim is to clarify the common origin of these relations and provide
+a concise derivation using the Drazin inverse. We start from the
+classical finite-response identity~\cite{Schweitzer1968,Meyer1980}.
+When the rates of one edge change, this identity shows that all
+stationary probability changes share a common factor.
+Eliminating it gives the relations between probabilities,
+observables, and currents. This approach gives short derivations of
+the stationary and Laplace-space
+relations~\cite{Harunari2024,ZhengLu2026,VoitsSchwarz2026} and the
 relations between stationary complex activities in chemical reaction
-networks~\cite{HarunariFiusaPolettini2026}.
+networks~\cite{HarunariFiusaPolettini2026}. We also explain when the
+same property holds in other linear systems.
 
-We do not claim to cover all the results of
-Refs.~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,Polettini2026Coplanarity,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026,HarunariFiusaPolettini2026}.
-Their more detailed approaches also give results outside the scope of
-this note. These include explicit network formulas for the coefficients
+We focus on the common derivation of these relations. Complementary
+results include explicit network formulas for the coefficients
 relating currents~\cite{Harunari2024}, expressions for these coefficients
 in terms of mean first-passage times~\cite{Khodabandehlou2025}, relations
 for several input currents~\cite{DalCengio2025}, bounds on stationary
@@ -154,7 +152,7 @@ Laplace transforms of first-hitting-time distributions~\cite{VoitsSchwarz2026}.
 \label{sec:response}
 
 The finite-response identity shown below dates back to the
-1960s~\cite{Schweitzer1968} and was originally formulated for Markov chains. Here we simply rewrite it for continuous-time Markov jump processes on a finite state space.
+1960s~\cite{Schweitzer1968} and was originally formulated for Markov chains. Here we write it for continuous-time Markov jump processes on a finite state space.
 
 We consider a finite irreducible Markov jump process, $\partial_t\bm p=W\bm p$, where $W_{ij}$ is the transition rate from $j$ to $i$, and $W_{jj}=-\sum_{i\ne j}W_{ij}$.
 The stationary distribution satisfies $W\bm\pi=0$ and $\bm1^\intercal\bm\pi=1$.
@@ -317,43 +315,60 @@ These relations hold for the Laplace transforms. At a fixed time, varying the ed
 
 \subsection{Chemical reaction networks}
 
-The same argument also applies to chemical reaction networks in terms of chemical complexes. 
-We recover the mutual linearity of complex activities from recent Ref.~\cite{HarunariFiusaPolettini2026}
-directly through the Drazin inverse, avoiding the spanning-tree theorem and the associated coplanarity argument.
-Here a \emph{complex} is the combination of species on either side of a reaction. For example, $A+B\rightleftharpoons C$ connects the complexes $A+B$ and $C$. If $x_A,x_B,x_C$ are the species concentrations, their \emph{activities} are $\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
-% Mass-action kinetics means that each reaction rate is its rate constant times the activity of its source complex.
+The same argument applies to chemical reaction networks and recovers
+the mutual linearity of complex activities derived in
+Ref.~\cite{HarunariFiusaPolettini2026}. Here we obtain this relation
+directly using the Drazin inverse.
+A \emph{complex} is a combination of species appearing on either side
+of a reaction. For example, $A+B\rightleftharpoons C$ connects the
+complexes $A+B$ and $C$. If $x_A,x_B,x_C$ are the species
+concentrations, the corresponding \emph{complex activities} are
+$\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
 
-View the complexes as graph vertices and the reactions as edges. The matrix $K$ plays the same role as $W$ above: $K_{ij}$ is the rate constant for transformation of complexes $j\to i$, and each column sums to zero.
-We assume that the stationary state is complex balanced~\cite{MarehalliSrinivas2023}: at each complex, the total incoming reaction flux equals the total outgoing flux as $K\bm\psi=0$.
-This equation is linear in the activities, even though the activities can depend nonlinearly on concentrations. Unlike probabilities, they are not normalized: their sum $S=\sum_n\psi_n$ can change with the rates.
+We represent the complexes as graph vertices and the reactions as
+edges, and consider a connected mass-action network with bidirectional
+reactions.
+The matrix $K$ plays the same role as $W$ above: for $i\ne j$,
+$K_{ij}$ is the rate constant for the reaction $j\to i$, and each
+column sums to zero.
+We assume that the positive stationary states considered below are complex
+balanced~\cite{MarehalliSrinivas2023}: at each complex, the total
+incoming reaction flux equals the total outgoing flux, so
+$K\bm\psi=0$.
+This equation is linear in the activities, even though the activities
+can depend nonlinearly on the concentrations. Unlike probabilities,
+the activities are not normalized: their sum $S=\sum_n\psi_n$ can
+change with the rate constants. We define the normalized activity
+vector $\bm\pi=\bm\psi/S$.
 
-Now vary only the forward and backward rate constants $r_+$ and $r_-$
-of one reaction $j\rightleftharpoons i$. Remove that reaction in both
-directions to define a reference matrix $K_0$, and assume that the
-remaining graph is connected (the removed edge is not a bridge).
-Then $K_0$ depends only on the fixed rates and has a normalized
-stationary vector $\bm\pi^0$ and Drazin inverse $G_0$.
-With the assumption of mass action the removed reaction carries the net current
-$J \equiv r_+\psi_j-r_-\psi_i$. Then we can decompose
+Now change only the forward and backward rate constants $r_+$ and
+$r_-$ of one reaction $j\rightleftharpoons i$. As in the derivation
+of \cref{eq:finite}, subtracting the two complex-balance equations
+gives $K\Delta\bm\psi=-\Delta K\bm\psi'$.
+Multiplying by $G=K^D$, with
+$GK=I-\bm\pi\bm1^\intercal$, and using
+$\bm1^\intercal\Delta\bm\psi=\Delta S$ gives
+$\Delta\bm\psi-\bm\pi\Delta S=-G\Delta K\bm\psi'$.
+For the controlled reaction, this yields
 \begin{align}
-    K \bm \psi = K_0 \bm \psi + (\bm e_i-\bm e_j)J = 0\,,
+    \Delta\psi_n&=\pi_n\Delta S+h_n\alpha\,,\nonumber\\
+    \alpha&\equiv\Delta r_+\psi_j'-\Delta r_-\psi_i'\,,
+    \label{eq:complex-response}
 \end{align}
-where $\bm e_i$ is a unit vector.
-Using $G_0K_0=I-\bm\pi^0\bm1^\intercal$ gives
+where $h_n=G_{nj}-G_{ni}$ and $\Delta S=S'-S$.
+The first term accounts for the change in the total activity; it
+vanishes for probabilities because normalization fixes $S=1$.
+Equivalently, $\bm\psi'=S'\bm\pi+\bm h\alpha$.
+Eliminating the two scalars $S'$ and $\alpha$ between three complexes
+$a,b,c$ gives
 \begin{align}
-    \psi_n=S\pi_n^0+h_nJ\,,\qquad
-    h_n \equiv (G_0)_{nj}-(G_0)_{ni}\,.
-\end{align}
-All dependence on the varied rates therefore enters through two
-scalars, $S$ and $J$; the vectors $\bm\pi^0$ and $\bm h$ stay fixed.
-Writing this expression for three complexes $a,b,c$ and eliminating
-both scalars gives
-\begin{align}
-    C_{bc}\psi_a+C_{ca}\psi_b+C_{ab}\psi_c=0\,,
+    C_{bc}\psi_a'+C_{ca}\psi_b'+C_{ab}\psi_c'=0\,,
     \label{eq:complex-activities}
 \end{align}
-where $C_{ab}=\pi_a^0h_b-\pi_b^0h_a$ depends only on the fixed rates.
-\Cref{eq:complex-activities} recovers Eq. (5) of Ref.~\cite{HarunariFiusaPolettini2026}.
+where $C_{ab}=\pi_a h_b-\pi_b h_a$ is evaluated before the change
+and is independent of $\Delta r_+$ and $\Delta r_-$.
+Equation~\eqref{eq:complex-activities} recovers the homogeneous
+relation in Eq.~(5) of Ref.~\cite{HarunariFiusaPolettini2026}.
 
 \begin{samepage}
 \section{Conclusion}

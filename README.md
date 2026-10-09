@@ -44,10 +44,13 @@ ratio in the authors' DFRR paper. A compact application with `A = s I - W`
 derives Laplace-domain mutual linearity for a fixed initial distribution,
 including the current relations and the distinction from instantaneous
 mutual linearity in time. A second application derives the homogeneous
-three-activity relation for chemical reaction networks with zero deficiency,
-bidirectional reactions, and one linkage class. The Drazin inverse of the
-complex-space Laplacian with the controlled nonbridge reaction removed gives
-`psi = S pi^0 + h J`; eliminating `S` and `J` recovers the relation of
+three-activity relation for complex-balanced chemical reaction networks with
+bidirectional reactions and one linkage class. Applying the same finite-response
+identity to the complex-space Laplacian gives
+`Delta psi = (psi / S) Delta S + h alpha`, where `S = sum(psi)`.
+The extra term accounts for the changing activity sum. Equivalently,
+`psi' = S' pi + h alpha`, with `pi = psi / S`; eliminating `S'` and `alpha`
+recovers the relation of
 Harunari, Fiusa, and Polettini (arXiv:2610.11970v1).
 The broader rank-r, multiple-edge, and
 uniformization discussions remain outside the short note.
