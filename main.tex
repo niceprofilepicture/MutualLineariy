@@ -93,7 +93,7 @@
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% frontmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Mutual linearity from classical Markov response theory}
+\title{Mutual linearity from classical response theory}
 
 \author{Timur Aslyamov}
 \email{timur.aslyamov@uni.lu}
@@ -321,7 +321,7 @@ The same argument also applies to chemical reaction networks in terms of chemica
 We recover the mutual linearity of complex activities from recent Ref.~\cite{HarunariFiusaPolettini2026}
 directly through the Drazin inverse, avoiding the spanning-tree theorem and the associated coplanarity argument.
 Here a \emph{complex} is the combination of species on either side of a reaction. For example, $A+B\rightleftharpoons C$ connects the complexes $A+B$ and $C$. If $x_A,x_B,x_C$ are the species concentrations, their \emph{activities} are $\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
-Mass-action kinetics means that each reaction rate is its rate constant times the activity of its source complex.
+% Mass-action kinetics means that each reaction rate is its rate constant times the activity of its source complex.
 
 View the complexes as graph vertices and the reactions as edges. The matrix $K$ plays the same role as $W$ above: $K_{ij}$ is the rate constant for transformation of complexes $j\to i$, and each column sums to zero.
 We assume that the stationary state is complex balanced~\cite{MarehalliSrinivas2023}: at each complex, the total incoming reaction flux equals the total outgoing flux as $K\bm\psi=0$.
@@ -333,15 +333,17 @@ directions to define a reference matrix $K_0$, and assume that the
 remaining graph is connected (the removed edge is not a bridge).
 Then $K_0$ depends only on the fixed rates and has a normalized
 stationary vector $\bm\pi^0$ and Drazin inverse $G_0$.
-The removed reaction carries the net current
-$J=r_+\psi_j-r_-\psi_i$: it supplies complex $i$ and drains complex $j$.
-The remaining reactions must balance this current, so
-$K_0\bm\psi=-(\bm e_i-\bm e_j)J$, where $\bm e_i$ is a unit vector.
+With the assumption of mass action the removed reaction carries the net current
+$J \equiv r_+\psi_j-r_-\psi_i$. Then we can decompose
+\begin{align}
+    K \bm \psi = K_0 \bm \psi + (\bm e_i-\bm e_j)J = 0\,,
+\end{align}
+where $\bm e_i$ is a unit vector.
 Using $G_0K_0=I-\bm\pi^0\bm1^\intercal$ gives
-\begin{align*}
+\begin{align}
     \psi_n=S\pi_n^0+h_nJ\,,\qquad
-    h_n=(G_0)_{nj}-(G_0)_{ni}\,.
-\end{align*}
+    h_n \equiv (G_0)_{nj}-(G_0)_{ni}\,.
+\end{align}
 All dependence on the varied rates therefore enters through two
 scalars, $S$ and $J$; the vectors $\bm\pi^0$ and $\bm h$ stay fixed.
 Writing this expression for three complexes $a,b,c$ and eliminating
@@ -351,13 +353,7 @@ both scalars gives
     \label{eq:complex-activities}
 \end{align}
 where $C_{ab}=\pi_a^0h_b-\pi_b^0h_a$ depends only on the fixed rates.
-If $C_{bc}\ne0$, two stationary activities determine the third for
-every choice of $r_+$ and $r_-$. The relation concerns activities,
-such as $x_Ax_B$, and does not in general imply a linear relation
-between individual species concentrations.
-For probabilities, normalization fixes $S=1$, so only $J$ needs to
-be eliminated and two components suffice, recovering the earlier
-affine relation.
+\Cref{eq:complex-activities} recovers Eq. (5) of Ref.~\cite{HarunariFiusaPolettini2026}.
 
 \begin{samepage}
 \section{Conclusion}
