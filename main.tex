@@ -317,28 +317,15 @@ These relations hold for the Laplace transforms. At a fixed time, varying the ed
 
 \subsection{Chemical reaction networks}
 
-The same argument also applies to complex activities in chemical reaction
-networks. We recover the relation of Ref.~\cite{HarunariFiusaPolettini2026}
-directly through the Drazin inverse, avoiding the spanning-tree
-construction and the associated coplanarity argument.
-Here a \emph{complex} is the combination of species on either side of a
-reaction. For example, $A+B\rightleftharpoons C$ connects the complexes
-$A+B$ and $C$. If $x_A,x_B,x_C$ are the species concentrations, their
-\emph{activities} are $\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
-Mass-action kinetics means that each reaction rate is its rate constant
-times the activity of its source complex.
+The same argument also applies to chemical reaction networks in terms of chemical complexes. 
+We recover the mutual linearity of complex activities from recent Ref.~\cite{HarunariFiusaPolettini2026}
+directly through the Drazin inverse, avoiding the spanning-tree theorem and the associated coplanarity argument.
+Here a \emph{complex} is the combination of species on either side of a reaction. For example, $A+B\rightleftharpoons C$ connects the complexes $A+B$ and $C$. If $x_A,x_B,x_C$ are the species concentrations, their \emph{activities} are $\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
+Mass-action kinetics means that each reaction rate is its rate constant times the activity of its source complex.
 
-View the complexes as graph vertices and the reactions as edges.
-The matrix $K$ plays the same role as $W$ above: $K_{ij}$ is the rate
-constant for $j\to i$, and each column sums to zero.
-We consider bidirectional reactions on one connected graph (one linkage
-class), with zero deficiency~\cite{MarehalliSrinivas2023}. This last structural condition ensures
-that every positive stationary state is \emph{complex balanced}: at each
-complex, the total incoming reaction flux equals the total outgoing
-flux. Thus $K\bm\psi=0$.
-This equation is linear in the activities, even though the activities
-can depend nonlinearly on concentrations. Unlike probabilities, they
-are not normalized: their sum $S=\sum_n\psi_n$ can change with the rates.
+View the complexes as graph vertices and the reactions as edges. The matrix $K$ plays the same role as $W$ above: $K_{ij}$ is the rate constant for transformation of complexes $j\to i$, and each column sums to zero.
+We assume that the stationary state is complex balanced~\cite{MarehalliSrinivas2023}: at each complex, the total incoming reaction flux equals the total outgoing flux as $K\bm\psi=0$.
+This equation is linear in the activities, even though the activities can depend nonlinearly on concentrations. Unlike probabilities, they are not normalized: their sum $S=\sum_n\psi_n$ can change with the rates.
 
 Now vary only the forward and backward rate constants $r_+$ and $r_-$
 of one reaction $j\rightleftharpoons i$. Remove that reaction in both
