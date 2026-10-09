@@ -5,7 +5,7 @@ The REVTeX preamble, fonts, author order, emails, and affiliation come from
 `AdaptationLimit/paper/main.tex`; the journal option is changed to `pre`.
 
 - `main.tex`: self-contained manuscript.
-- `references.bib`: twelve references with verified publication or preprint metadata.
+- `references.bib`: twenty-five references with verified publication or preprint metadata.
 - `main.pdf`: compiled review copy.
 - `verify_derivation.py`: reproducible numerical verification, requiring NumPy.
 - `research/source_notes.md`: literature provenance, earlier discussions, and scope.
@@ -31,10 +31,10 @@ For Overleaf, upload `main.tex` and `references.bib` and select pdfLaTeX.
 No cross-paper labels, figures, or external research repository are required.
 
 The current version uses the matrix entries `W_ij` and `W_ji` directly.
-Four numbered sections cover the introduction, exact stationary response,
-mutual linearity, and discussion and conclusions. The introduction states
+Five numbered sections cover the introduction, exact stationary response,
+mutual linearity, further applications, and conclusion. The introduction states
 the goal of deriving the known relations from classical finite-response theory.
-It has ten equations and no boxed formulas. The discussion extends
+It has eleven numbered equations and no boxed formulas. The applications section extends
 the argument to nonsingular linear systems when one coefficient is varied,
 explicitly eliminating the common factor between components `n` and `m`.
 A separate paragraph states the fixed-direction generalization needed for
@@ -43,7 +43,13 @@ rates from the rate-independent ratios and cites the dynamical response-kernel
 ratio in the authors' DFRR paper. A compact application with `A = s I - W`
 derives Laplace-domain mutual linearity for a fixed initial distribution,
 including the current relations and the distinction from instantaneous
-mutual linearity in time. The broader rank-r, multiple-edge, and
+mutual linearity in time. A second application derives the homogeneous
+three-activity relation for chemical reaction networks with zero deficiency,
+bidirectional reactions, and one linkage class. The Drazin inverse of the
+complex-space Laplacian with the controlled nonbridge reaction removed gives
+`psi = S pi^0 + h J`; eliminating `S` and `J` recovers the relation of
+Harunari, Fiusa, and Polettini (arXiv:2610.11970v1).
+The broader rank-r, multiple-edge, and
 uniformization discussions remain outside the short note.
 
 ## Verification

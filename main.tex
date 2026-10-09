@@ -114,7 +114,8 @@ in all stationary probabilities share a common factor. Eliminating this
 factor gives the relations between probabilities, observables, and
 currents, even far from equilibrium. We also explain how the same
 argument applies when one coefficient of a linear system changes and
-recovers the known relations in Laplace space.
+recovers the known relations in Laplace space and between stationary
+complex activities in chemical reaction networks.
 \end{abstract}
 \maketitle
 
@@ -124,7 +125,7 @@ recovers the known relations in Laplace space.
 Stationary probabilities and currents generally depend nonlinearly on
 transition rates. Nevertheless, varying the rates of one edge produces
 straight-line relations between these quantities, known as mutual
-linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
+linearity~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,Polettini2026Coplanarity,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
 The purpose of this short explanatory note is to clarify the common
 origin of the basic probability and current relations using the
 classical finite-response
@@ -134,10 +135,13 @@ factor. Eliminating it gives the relations between probabilities,
 observables, and currents. This gives a single short argument for both
 the stationary and the known Laplace-space
 relations~\cite{Harunari2024,ZhengLu2026,VoitsSchwarz2026}, and explains
-when the same property holds in other linear systems.
+when the same property holds in other linear systems. Applied to the
+complex-space Laplacian, the argument also recovers the homogeneous
+relations between stationary complex activities in chemical reaction
+networks~\cite{HarunariFiusaPolettini2026}.
 
 We do not claim to cover all the results of
-Refs.~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026}.
+Refs.~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,Polettini2026Coplanarity,BebonSpeck2026,ZhengLu2026,VoitsSchwarz2026,HarunariFiusaPolettini2026}.
 Their more detailed approaches also give results outside the scope of
 this note. These include explicit network formulas for the coefficients
 relating currents~\cite{Harunari2024}, expressions for these coefficients
@@ -163,6 +167,19 @@ where $G=W^D$ is the Drazin inverse~\cite{Meyer1975,crook2018drazin,aslyamov2025
 It satisfies $GW=WG=I-\bm\pi\bm1^\intercal$, $G\bm\pi=0$, and $\bm1^\intercal G=0$.
 Indeed, subtracting the two stationary equations gives $W\Delta\bm\pi=-\Delta W\bm\pi'$.
 Multiplication by $G$ and normalization give \cref{eq:finite}, without assuming that $\Delta W$ is small.
+
+The Drazin inverse underlies current-cumulant
+calculations~\cite{BaiesiMaesNetocny2009}, expansions under slow
+driving~\cite{MandalJarzynski2016}, fluctuation-response relations for
+state observables~\cite{Ptaszynski2026State} and state--current
+correlations~\cite{Ptaszynski2026Mixed}, responses in the Curie--Weiss
+model~\cite{PtaszynskiEsposito2025}, and finite perturbations of Markov jump
+processes~\cite{BaoLiang2026}. The relation
+$\tau_{j\to i}=(G_{ij}-G_{ii})/\pi_i$
+connects this approach to response formulas and bounds using mean first-passage
+times~\cite{ChoMeyer2000,Harvey2023,Khodabandehlou2025,BaoLiang2026}.
+Alternatively, normalization gives an invertible matrix from
+the rate matrix~\cite{AslyamovEsposito2024Exact,AslyamovEsposito2024General}.
 
 \section{Mutual linearity}
 \label{sec:mutual-linearity}
@@ -245,7 +262,7 @@ $(k,l)$ gives
     \label{eq:currents}
 \end{align}
 which is the mutual linearity of stationary
-currents~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025}.
+currents~\cite{Harunari2024,Khodabandehlou2025,DalCengio2025,Polettini2026Coplanarity}.
 Both current changes contain the same $\alpha$, so the coefficient relating them is independent of the new edge rates, provided the denominator in \cref{eq:currents} is nonzero.
 
 % The connection with the first-passage formulation of
@@ -254,10 +271,11 @@ Both current changes contain the same $\alpha$, so the coefficient relating them
 % $\tau_{j\to n}$ is the mean first-passage time from $j$ to $n$
 % and $\tau_{n\to n}=0$~\cite{Meyer1975}.
 
-\section{Discussion and conclusions}
-\label{sec:discussion}
+\section{Further applications}
+\label{sec:applications}
 
-The argument applies to any linear
+We now apply the common-factor argument to Laplace-transformed dynamics
+and stationary complex activities. First, consider a linear
 system $A\bm x=\bm b$ with nonsingular $A$ and fixed $\bm b$.
 If only $A_{ij}$ changes and $A'$ is nonsingular, subtracting the
 equations and eliminating $\Delta A_{ij}x_j'$ between $n$ and $m$ gives
@@ -274,6 +292,8 @@ with fixed $\bm u$: the perturbation enters the equations in fixed
 proportions, with only its scalar amplitude $\alpha$ changing.
 Then $\Delta\bm x=-A^{-1}\bm u\alpha$, so eliminating $\alpha$
 again gives mutual linearity.
+
+\subsection{Laplace-transformed dynamics}
 
 The frequency-domain extension follows from this argument using $A=sI-W$. For time-independent rates, the Laplace-transformed master equation is
 $(sI-W)\widetilde{\bm p}(s)=\bm p(0)$.
@@ -296,6 +316,44 @@ Repeating \cref{eq:output-current,eq:input-current,eq:currents} with
 $\widetilde{\bm p}(s)$ and $h_n(s)$ gives the corresponding current
 relations~\cite{Harunari2024}.
 These relations hold for the Laplace transforms. At a fixed time, varying the edge rates need not produce a straight-line relation between two probabilities or two currents~\cite{VoitsSchwarz2026}.
+
+\subsection{Chemical reaction networks}
+
+The same argument recovers mutual linearity of complex activities in
+chemical reaction networks~\cite{HarunariFiusaPolettini2026}.
+For bidirectional mass-action networks with zero deficiency and one
+linkage class, positive stationary complex activities (mass-action monomials) satisfy
+$K\bm\psi=0$, where $K$ is the complex-space Laplacian.
+Let $K_0$ be this Laplacian with the controlled nonbridge reaction
+$j\rightleftharpoons i$ removed, with normalized stationary vector
+$\bm\pi^0$ and Drazin inverse $G_0$.
+Writing its current as $J=r_+\psi_j-r_-\psi_i$, we have
+$K_0\bm\psi=-(\bm e_i-\bm e_j)J$, where $\bm e_i$ is a unit vector.
+Multiplication by $G_0$ gives
+\begin{gather}
+    \psi_n=S\pi_n^0+h_nJ\,,\nonumber\\
+    C_{bc}\psi_a+C_{ca}\psi_b+C_{ab}\psi_c=0\,,
+    \label{eq:complex-activities}
+\end{gather}
+where $S=\sum_n\psi_n$, $h_n=(G_0)_{nj}-(G_0)_{ni}$, and
+$C_{ab}=\pi_a^0h_b-\pi_b^0h_a$.
+Eliminating $S$ and $J$ gives the second relation, whose coefficients
+depend only on the uncontrolled rates.
+Probability normalization fixes $S=1$, recovering the two-probability
+affine relation.
+
+\begin{samepage}
+\section{Conclusion}
+\label{sec:conclusion}
+
+The classical finite-response identity yields mutual linearity whenever
+the perturbation source has a fixed direction. This gives the stationary
+and Laplace-space relations without expanding in the rate changes.
+For the complex-balanced chemical networks considered here, the activity
+scale supplies a second amplitude; eliminating both gives the homogeneous
+three-activity relation.
+\par
+\end{samepage}
 
 \bibliography{references}
 \end{document}

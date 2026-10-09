@@ -10,8 +10,8 @@ common-factor response. Arbitrary perturbations of a linear system need not
 have this property; the perturbation source must have a fixed direction.
 The source record below describes the initial broader investigation. The
 rank-r and multiple-edge extensions and uniformization
-are not retained in the current manuscript. Nine of the twelve bibliography
-entries are cited in the short version.
+are not retained in the current manuscript. Twenty-four of the twenty-five bibliography
+entries are cited in the current version.
 
 The annotated revision clarifies that `h_n` depends on the rates at the chosen
 starting point, while its ratios are invariant under changes of the selected
@@ -51,6 +51,73 @@ Primary texts checked:
   time-domain convolution interpretation. The manuscript does not reproduce
   the graph expansions, short-time asymptotics, or hitting-time results.
 
+The chemical-network addition (9 October 2026) cites
+[Harunari, Fiusa, and Polettini, arXiv:2610.11970v1](https://arxiv.org/html/2610.11970v1).
+Their zero-deficiency, bidirectionality, and single-linkage-class assumptions
+supply complex balance, `K psi = 0`, for positive stationary activities.
+Removing the controlled nonbridge reaction leaves an irreducible `K_0`.
+Multiplication of `K_0 psi = -(e_i - e_j) J` by its Drazin inverse gives
+`psi = S pi^0 + h J`, with `S = sum(psi)` and
+`h = -K_0^D (e_i - e_j)`. Eliminating the two amplitudes recovers their
+Eq. (5), using coefficients `C_ab = pi_a^0 h_b - pi_b^0 h_a` that depend
+only on uncontrolled rates. If all three minors vanish for a selected triple,
+its activities are mutually proportional; the displayed relation remains valid.
+The manuscript includes this central stationary relation, without adding
+activity-ratio bounds or stochastic claims. The fourth section is now
+"Further applications," with parallel subsections for Laplace-transformed
+dynamics and chemical reaction networks. The abstract and introduction reflect
+both applications. An independent in-memory check of the activity decomposition,
+the homogeneous relation, and scalar current formula covered 900 rate pairs
+on 60 random networks, with maximum residual approximately `6.88e-15`.
+
+The closing literature paragraph in "Exact stationary response" distinguishes
+the use of the Drazin inverse for response derivatives from its use for finite
+changes. It briefly cites
+[Baiesi, Maes, and Netocny, J. Stat. Phys. 135, 57-75 (2009)](https://doi.org/10.1007/s10955-009-9723-3)
+for current-cumulant calculations: their Eqs. (16)-(17) express covariances
+using the Drazin inverse, and higher cumulants follow from their perturbation
+expansion. This attribution does not identify their counting-field calculation
+with the physical-response factorization in the later FRRs.
+[Mandal and Jarzynski, J. Stat. Mech. 2016, 063204](https://doi.org/10.1088/1742-5468/2016/06/063204)
+is cited for expansions under slow driving; their Eqs. (11)-(13) define the
+same generalized inverse and give the leading lag `p - pi = G dot(pi)`.
+The paragraph also cites the two fluctuation-response papers by Ptaszynski, Aslyamov,
+and Esposito: [state observables, PRE 113, 024130 (2026)](https://doi.org/10.1103/r1qk-76gc)
+and [state-current correlations, PRE 113, 024131 (2026)](https://doi.org/10.1103/4htr-dfc5).
+Their Drazin response identities appear in
+[Eq. (11)](https://arxiv.org/html/2412.10233) and
+[Eq. (16)](https://arxiv.org/html/2506.08877), respectively.
+The requested Ising-model reference is
+[Ptaszynski and Esposito, PRE 111, 034125 (2025)](https://doi.org/10.1103/PhysRevE.111.034125):
+[Section III.2, Eq. (35)](https://arxiv.org/html/2411.19643v3) derives response
+derivatives recursively using the Drazin inverse. For finite changes,
+[Bao and Liang, arXiv:2412.19602v6](https://arxiv.org/html/2412.19602v6),
+Supplemental Material I, Eq. (S5), explicitly gives the same finite-response
+identity as this note. The bibliography uses their revised 2026 title,
+"Nonlinear Response Identities and Bounds for Nonequilibrium Steady States."
+The first version appeared in 2024 under a different title.
+The inline connection to mean first-passage times uses the column-generator
+convention: `tau_(j->i) = (G_ij - G_ii) / pi_i`, with zero passage time when
+starting at the target. This is Bao and Liang's Eq. (S2); their Eqs. (S5)--(S9)
+convert the Drazin finite-response identity to its passage-time form.
+At the user's request, the MFPT sentence also cites
+[Cho and Meyer, LAA 316, 21-28 (2000)](https://doi.org/10.1016/S0024-3795(99)00263-3),
+"Markov chain sensitivity measured by mean first passage times."
+Publication metadata and the scope of its sensitivity bounds were verified
+on the publisher's page. The manuscript now says "response formulas and
+bounds" to reflect that scope.
+The paragraph also cites Harvey et al., Eq. (44), for linear response in
+passage times, and Khodabandehlou, Maes, and Netocny, Eq. (III.1), for finite
+changes. It does not attribute the finite-change formula to Harvey et al.
+The alternative formulations are
+[Aslyamov and Esposito, PRL 132, 037101 (2024)](https://doi.org/10.1103/PhysRevLett.132.037101)
+and [PRL 133, 107103 (2024)](https://doi.org/10.1103/PhysRevLett.133.107103).
+They incorporate normalization to obtain invertible matrices from the rate
+matrix; the second paper's matrix approach and Supplemental Material A give
+the reduced and row-replacement constructions. "Invertible" is the intended
+algebraic property here; "reversible" would refer to a different property of
+the Markov dynamics.
+
 ## Previous discussions consulted
 
 - **Clarify MJP steady-state linearity**, task
@@ -66,8 +133,9 @@ Primary texts checked:
   `01a05376-1ece-73c0-9833-985a7fb60eec`, 30 August 2026.
   This distinguishes exact affine/unimolecular stationarity from nonlinear
   chemical kinetics, where a local derivative ratio generally does not
-  integrate to a global affine relation. The present draft stays with finite
-  Markov jump processes.
+  integrate to a global affine relation. The added chemical-network application
+  concerns complex activities under complex balance, rather than a general
+  affine relation between species concentrations.
 
 ## Classical foundation
 
@@ -92,6 +160,13 @@ column convention, normalization, and uniformization stated explicitly.
 
 ## Recent results
 
+- [Polettini, Harunari, Dal Cengio, and Lecomte, Lett. Math. Phys. 116, 1 (2026)](https://doi.org/10.1007/s11005-025-02026-8),
+  "Coplanarity of rooted spanning-tree vectors," is included in the existing
+  mutual-linearity citation groups. The publisher's abstract identifies an
+  alternative spanning-tree derivation of stationary current mutual linearity
+  and an extension to two pairs of edges. The bibliography follows the
+  journal's 2026 volume year, although the online publication date was
+  5 December 2025. No additional tree identities are claimed in the note.
 - [Harunari et al., PRL 133, 047401 (2024)](https://doi.org/10.1103/PhysRevLett.133.047401),
   [preprint](https://arxiv.org/abs/2402.13193): stationary current-current
   affinity under changes of the two input rates. The draft recovers the
@@ -121,9 +196,10 @@ column convention, normalization, and uniformization stated explicitly.
   The coefficients depend on the whole input set. Their transient/resolvent
   and fluctuation results are outside the scope of the note.
 - [Harvey, Lahiri, and Ganguli, PRE 108, 014403 (2023)](https://doi.org/10.1103/PhysRevE.108.014403):
-  bibliography metadata checked on APS. The manuscript attributes the
-  Eq. (44) connection specifically to Khodabandehlou et al.; it does not
-  present this as a newly discovered historical link.
+  bibliography metadata checked on APS. Equation (44) gives linear response
+  in terms of mean first-passage times. The manuscript cites it alongside
+  the finite-response formulations of Khodabandehlou et al. and Bao and Liang,
+  without making a priority claim.
 
 Reference PDFs and extracted text are cached here locally and ignored by Git.
 
