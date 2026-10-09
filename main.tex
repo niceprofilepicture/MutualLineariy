@@ -317,27 +317,59 @@ These relations hold for the Laplace transforms. At a fixed time, varying the ed
 
 \subsection{Chemical reaction networks}
 
-The same argument recovers mutual linearity of complex activities in
-chemical reaction networks~\cite{HarunariFiusaPolettini2026}.
-For bidirectional mass-action networks with zero deficiency and one
-linkage class, positive stationary complex activities (mass-action monomials) satisfy
-$K\bm\psi=0$, where $K$ is the complex-space Laplacian.
-Let $K_0$ be this Laplacian with the controlled nonbridge reaction
-$j\rightleftharpoons i$ removed, with normalized stationary vector
-$\bm\pi^0$ and Drazin inverse $G_0$.
-Writing its current as $J=r_+\psi_j-r_-\psi_i$, we have
+The same argument also applies to complex activities in chemical reaction
+networks. We recover the relation of Ref.~\cite{HarunariFiusaPolettini2026}
+directly through the Drazin inverse, avoiding the spanning-tree
+construction and the associated coplanarity argument.
+Here a \emph{complex} is the combination of species on either side of a
+reaction. For example, $A+B\rightleftharpoons C$ connects the complexes
+$A+B$ and $C$. If $x_A,x_B,x_C$ are the species concentrations, their
+\emph{activities} are $\psi_{A+B}=x_Ax_B$ and $\psi_C=x_C$.
+Mass-action kinetics means that each reaction rate is its rate constant
+times the activity of its source complex.
+
+View the complexes as graph vertices and the reactions as edges.
+The matrix $K$ plays the same role as $W$ above: $K_{ij}$ is the rate
+constant for $j\to i$, and each column sums to zero.
+We consider bidirectional reactions on one connected graph (one linkage
+class), with zero deficiency~\cite{MarehalliSrinivas2023}. This last structural condition ensures
+that every positive stationary state is \emph{complex balanced}: at each
+complex, the total incoming reaction flux equals the total outgoing
+flux. Thus $K\bm\psi=0$.
+This equation is linear in the activities, even though the activities
+can depend nonlinearly on concentrations. Unlike probabilities, they
+are not normalized: their sum $S=\sum_n\psi_n$ can change with the rates.
+
+Now vary only the forward and backward rate constants $r_+$ and $r_-$
+of one reaction $j\rightleftharpoons i$. Remove that reaction in both
+directions to define a reference matrix $K_0$, and assume that the
+remaining graph is connected (the removed edge is not a bridge).
+Then $K_0$ depends only on the fixed rates and has a normalized
+stationary vector $\bm\pi^0$ and Drazin inverse $G_0$.
+The removed reaction carries the net current
+$J=r_+\psi_j-r_-\psi_i$: it supplies complex $i$ and drains complex $j$.
+The remaining reactions must balance this current, so
 $K_0\bm\psi=-(\bm e_i-\bm e_j)J$, where $\bm e_i$ is a unit vector.
-Multiplication by $G_0$ gives
-\begin{gather}
-    \psi_n=S\pi_n^0+h_nJ\,,\nonumber\\
+Using $G_0K_0=I-\bm\pi^0\bm1^\intercal$ gives
+\begin{align*}
+    \psi_n=S\pi_n^0+h_nJ\,,\qquad
+    h_n=(G_0)_{nj}-(G_0)_{ni}\,.
+\end{align*}
+All dependence on the varied rates therefore enters through two
+scalars, $S$ and $J$; the vectors $\bm\pi^0$ and $\bm h$ stay fixed.
+Writing this expression for three complexes $a,b,c$ and eliminating
+both scalars gives
+\begin{align}
     C_{bc}\psi_a+C_{ca}\psi_b+C_{ab}\psi_c=0\,,
     \label{eq:complex-activities}
-\end{gather}
-where $S=\sum_n\psi_n$, $h_n=(G_0)_{nj}-(G_0)_{ni}$, and
-$C_{ab}=\pi_a^0h_b-\pi_b^0h_a$.
-Eliminating $S$ and $J$ gives the second relation, whose coefficients
-depend only on the uncontrolled rates.
-Probability normalization fixes $S=1$, recovering the two-probability
+\end{align}
+where $C_{ab}=\pi_a^0h_b-\pi_b^0h_a$ depends only on the fixed rates.
+If $C_{bc}\ne0$, two stationary activities determine the third for
+every choice of $r_+$ and $r_-$. The relation concerns activities,
+such as $x_Ax_B$, and does not in general imply a linear relation
+between individual species concentrations.
+For probabilities, normalization fixes $S=1$, so only $J$ needs to
+be eliminated and two components suffice, recovering the earlier
 affine relation.
 
 \begin{samepage}
