@@ -107,7 +107,7 @@
 
 
 \begin{abstract}
-We derive known mutual-linearity relations for Markov jump processes
+We unify known mutual-linearity relations for Markov jump processes
 and chemical reaction networks within a common framework based on
 classical finite-response theory. In a Markov jump process, an exact finite-response
 identity shows that all stationary probability changes share a common
@@ -140,9 +140,8 @@ relations between stationary complex activities in chemical reaction
 networks~\cite{HarunariFiusaPolettini2026}. We also explain when the
 same property holds in other linear systems.
 
-We focus on the common derivation of these relations. Complementary
-results include explicit network formulas for the coefficients
-relating currents~\cite{Harunari2024}, expressions for these coefficients
+We focus on the common derivation of these relations. The works cited above also establish more detailed results beyond the scope of this paper. 
+These include explicit network formulas for the coefficients relating currents~\cite{Harunari2024}, expressions for these coefficients
 in terms of mean first-passage times~\cite{Khodabandehlou2025}, relations
 for several input currents~\cite{DalCengio2025}, bounds on stationary
 probabilities and observables~\cite{BebonSpeck2026}, and relations between
@@ -174,7 +173,7 @@ correlations~\cite{Ptaszynski2026Mixed}, responses in the Curie--Weiss
 model~\cite{PtaszynskiEsposito2025}, and finite perturbations of Markov jump
 processes~\cite{BaoLiang2026}. The relation
 $\tau_{j\to i}=(G_{ij}-G_{ii})/\pi_i$
-connects this approach to response formulas and bounds using mean first-passage
+connects this approach to mean first-passage
 times~\cite{ChoMeyer2000,Harvey2023,Khodabandehlou2025,BaoLiang2026}.
 Alternatively, normalization gives an invertible matrix from
 the rate matrix~\cite{AslyamovEsposito2024Exact,AslyamovEsposito2024General}.
@@ -344,11 +343,18 @@ vector $\bm\pi=\bm\psi/S$.
 Now change only the forward and backward rate constants $r_+$ and
 $r_-$ of one reaction $j\rightleftharpoons i$. As in the derivation
 of \cref{eq:finite}, subtracting the two complex-balance equations
-gives $K\Delta\bm\psi=-\Delta K\bm\psi'$.
-Multiplying by $G=K^D$, with
+gives 
+%$K\Delta\bm\psi=-\Delta K\bm\psi'$.
+\begin{align}
+    K\Delta\bm\psi=-\Delta K\bm\psi'\,.
+    \label{eq:complexes-pert}
+\end{align}
+Multiplying \cref{eq:complexes-pert} by $G=K^D$, with
 $GK=I-\bm\pi\bm1^\intercal$, and using
 $\bm1^\intercal\Delta\bm\psi=\Delta S$ gives
-$\Delta\bm\psi-\bm\pi\Delta S=-G\Delta K\bm\psi'$.
+\begin{align}
+    \Delta\bm\psi-\bm\pi\Delta S=-G\Delta K\bm\psi'\,.
+\end{align}
 For the controlled reaction, this yields
 \begin{align}
     \Delta\psi_n&=\pi_n\Delta S+h_n\alpha\,,\nonumber\\
@@ -374,9 +380,10 @@ relation in Eq.~(5) of Ref.~\cite{HarunariFiusaPolettini2026}.
 \section{Conclusion}
 \label{sec:conclusion}
 
-The classical finite-response identity yields mutual linearity whenever
-the perturbation source has a fixed direction. This gives the stationary
-and Laplace-space relations without expanding in the rate changes.
+% The classical finite-response identity~\cref{eq:finite} yields mutual linearity whenever
+% the perturbation source has a fixed direction. This gives the stationary
+% and Laplace-space relations without expanding in the rate changes.
+The classical finite-response identity~\eqref{eq:finite} gives the stationary and Laplace-space mutual-linearity relations.
 For the complex-balanced chemical networks considered here, the activity
 scale supplies a second amplitude; eliminating both gives the homogeneous
 three-activity relation.
