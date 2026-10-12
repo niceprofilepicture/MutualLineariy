@@ -1,8 +1,10 @@
 # Generated builds and previews, including the former paper/ layout.
 build/
 
+# Keep generated PDFs local; submit the manuscript sources to Git.
+*.[pP][dD][fF]
+
 # Downloaded reference papers and extracted text; keep source_notes.md.
-**/research/*.pdf
 **/research/*.txt
 
 # Python caches.

@@ -55,7 +55,7 @@
   linkcolor=RoyalBlue,
   filecolor=RoyalBlue,
   citecolor=webgreen,
-  pdftitle={Mutual linearity from classical Markov response theory},
+  pdftitle={Mutual linearity from classical response theory},
   pdfauthor={Timur Aslyamov and Massimiliano Esposito},
   pdfcreator={pdfLaTeX},
   pdfproducer={LaTeX REVTeX}
@@ -103,7 +103,7 @@
 \email{massimiliano.esposito@uni.lu}
 \affiliation{Complex Systems and Statistical Mechanics, Department of Physics and Materials Science, University of Luxembourg, 30 Avenue des Hauts-Fourneaux, L-4362 Esch-sur-Alzette, Luxembourg}
 
-\date{\today}
+\date{October 12, 2026}
 
 
 \begin{abstract}
@@ -183,7 +183,6 @@ the rate matrix~\cite{AslyamovEsposito2024Exact,AslyamovEsposito2024General}.
 
 \subsection{State observables}
 
-We start with the derivation of mutual linearity for probabilities and state observables.
 For the second matrix $W'$, we change $W_{ij}$ and $W_{ji}$,
 keeping all other non-diagonal rates fixed and adjusting the diagonal elements to preserve probability conservation.
 Then, only components $i$ and $j$ of the vector $\Delta W\bm\pi'$ can be nonzero, and they sum to zero. Equation~\eqref{eq:finite} therefore gives
@@ -232,7 +231,7 @@ Thus, this response ratio can be obtained without invoking mutual linearity unde
 
 \subsection{Currents}
 
-Now we turn to mutual linearity between the steady-state currents. The stationary current from $l$ to $k$ is
+The stationary current from $l$ to $k$ is
 \mbox{$J_{kl}\equiv W_{kl}\pi_l-W_{lk}\pi_k$}.
 For an edge whose transition rates $W_{kl}$ and $W_{lk}$ are kept fixed,
 \cref{eq:edge-response} gives
@@ -317,10 +316,8 @@ These relations hold for the Laplace transforms. At a fixed time, varying the ed
 
 \subsection{Chemical reaction networks}
 
-The same argument applies to chemical reaction networks and recovers
-the mutual linearity of complex activities derived in
-Ref.~\cite{HarunariFiusaPolettini2026}. Here we obtain this relation
-directly using the Drazin inverse.
+The same argument recovers the mutual linearity of stationary complex
+activities derived in Ref.~\cite{HarunariFiusaPolettini2026}.
 A \emph{complex} is a combination of species appearing on either side
 of a reaction. For example, $A+B\rightleftharpoons C$ connects the
 complexes $A+B$ and $C$. If $x_A,x_B,x_C$ are the species
@@ -382,14 +379,13 @@ relation in Eq.~(5) of Ref.~\cite{HarunariFiusaPolettini2026}.
 \section{Conclusion}
 \label{sec:conclusion}
 
-We unify known mutual-linearity relations using the classical
-finite-response identity~\eqref{eq:finite}. From this common
-starting point, we derive the relations for stationary probabilities, Eq.~\eqref{eq:probabilities};
-state observables, Eq.~\eqref{eq:observables}; 
-stationary currents, Eq.~\eqref{eq:currents}; 
-components of linear systems, Eq.~\eqref{eq:linear-system}; 
-Laplace-transformed probabilities, Eq.~\eqref{eq:laplace}; 
-and stationary complex activities in complex-balanced chemical reaction networks, Eq.~\eqref{eq:complex-activities}.
+The classical finite-response identity~\eqref{eq:finite} unifies
+mutual linearity for stationary probabilities, Eq.~\eqref{eq:probabilities};
+state observables, Eq.~\eqref{eq:observables}; currents, Eq.~\eqref{eq:currents};
+components of linear systems, Eq.~\eqref{eq:linear-system};
+Laplace-transformed probabilities, Eq.~\eqref{eq:laplace}; and stationary
+complex activities in complex-balanced chemical reaction networks,
+Eq.~\eqref{eq:complex-activities}.
 
 \bibliography{references}
 \end{document}
